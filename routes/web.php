@@ -23,3 +23,7 @@ Route::get('auth/{provider}', 'Auth\SocialAuthController@redirectToProvider')->n
 Route::get('auth/{provider}/callback', 'Auth\SocialAuthController@handleProviderCallback');
 
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/nuestra-penya', 'HomeController@penya')->name('penya');
+
+Route::get('/admin', 'AdminController@index')->name('admin');

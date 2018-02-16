@@ -1,0 +1,178 @@
+html,
+body {
+  height: 100%;
+  background: $brand-danger;
+  /* The html and body elements cannot have any padding or margin. */
+}
+
+#wrap {
+	background: $body-bg;
+	min-height: 100%;
+	height: auto;
+	/* Negative indent footer by its height */
+	margin: 0 auto -35px;
+	/* Pad bottom by footer height */
+	padding: 0 0 35px;
+}
+
+/* Set the fixed height of the footer here */
+#footer {
+  background-color: $brand-danger;
+  color: #ffffff;
+  font-size: .9em;
+  height: 35px;
+  padding: .5em;
+  text-align: center;
+}
+
+/* BackToTop button css */
+#scroll {
+    position:fixed;
+    right:10px;
+    bottom:40px;
+    cursor:pointer;
+    width:50px;
+    height:50px;
+    background-color:$brand-primary;
+    text-indent:-9999px;
+    display:none;
+    -webkit-border-radius:50px;
+    -moz-border-radius:50px;
+    border-radius:50px;
+    opacity: .75;
+}
+#scroll span {
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left:-8px;
+    margin-top:-12px;
+    height:0;
+    width:0;
+    border: 8px solid transparent;
+    border-bottom-color:#ffffff;
+}
+#scroll:hover {
+    background-color: darken($brand-primary, 10%);
+    filter:"alpha(opacity=100)";
+    -ms-filter:"alpha(opacity=100)";
+}
+
+.top-menu {
+	background: #0f2b56;
+	border-bottom: 2px solid #9b1737;
+	color: white;
+	display: none;
+	font-size: .85em;
+	padding: .35em 0;
+	a {
+		color: #ffffff;
+		display: inline-block;
+	}
+}
+
+
+.title-menu {
+	background: $brand-danger;
+	font-size: 1em;
+	font-weight: bold;
+	height: auto;
+	padding: 0;
+	text-align: center;
+	a {
+		color: #ffffff;
+		&:hover {
+			text-decoration: none;
+		}
+		.logo {
+			display: inline-block;
+			width: 48px;
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		.brand {
+			display: inline-block;
+			padding: .75em 0;
+		}
+	}
+	.menu-btn, .user-btn {
+		cursor: pointer;
+		color: #ffffff;
+		font-size: 1.5em;
+		padding: 0.25em 0;
+	}
+}
+
+.main-menu {
+	background: $brand-danger;
+	border-top: 1px solid darken($brand-danger, 10%);
+	border-bottom: 1px solid darken($brand-danger, 10%);
+	display: none;
+	padding: 0;
+	ul {
+ 		list-style: none;
+ 		padding: 0;
+ 		margin: 0;
+ 		li {
+			display: inline-block;
+			margin-right: -4px;
+			&:hover {
+				background: darken($brand-danger, 10%);
+			}
+			a {
+				color: white;
+				display: block;
+				padding: .75em;
+				text-decoration: none;
+			}
+			.current {
+				background: #0f2b56;
+			}
+ 		}
+
+ 	}
+}
+
+.breadcrumbpb {
+	background: #f5f5f5;
+	border-bottom: 1px solid darken(#f5f5f5, 5%);
+	.breadcrumb {
+		background: none;
+		margin: 0;
+		.breadcrumb-item {
+			font-size: .9em;
+		}
+	}
+}
+
+.margin10 {
+	margin: 1em 0;
+}
+
+ @media (min-width: 768px) { //tablet or highter
+ 	body {
+ 		background: $body-bg;
+ 	}
+ 	.top-menu {
+		display: block;
+	}
+ 	.title-menu {
+		background: url(https://media-public.fcbarcelona.com/20157/28990530/725447/1.0/725447.jpg?t=1504262004000) no-repeat 50% 50% / cover;
+ 		border-bottom: none;
+ 		height: 120px;
+ 		padding: 1.5em 0;
+ 		text-align: center;
+		.logo {
+			width: 72px;
+ 		}
+		.brand {
+			margin-left: 1.5em;
+			font-size: 2em;
+		}
+ 	}
+	.main-menu {
+	 	display: block;
+	}
+}

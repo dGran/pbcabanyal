@@ -12,69 +12,157 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- animate --}}
+    <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    @yield('css')
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+    <div id="wrap">
+        <div class="top-menu">
             <div class="container">
-                <div class="navbar-header">
-
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse" aria-expanded="false">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
-
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
+                síguenos!...
+                <a href="">
+                    <i class="fa fa-facebook-square animated jello" aria-hidden="true"></i>
+                </a>
+                <a href="">
+                    <i class="fa fa-twitter-square animated jello" aria-hidden="true"></i>
+                </a>
+                <i class="fa fa-phone" aria-hidden="true"></i>
+                600 000 000
+{{--                 <a href="">
+                    <span class="fa-stack animated jello">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a>
+                <a href="">
+                    <span class="fa-stack animated jello">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                    </span>
+                </a> --}}
             </div>
+
+        </div>
+
+        <nav class="title-menu">
+            <div class="container clearfix">
+                <div class="menu-btn pull-left visible-xs">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                </div>
+                <a href="{{ route('home') }}">
+                    <figure class="logo hidden-xs">
+                        <img src="{{ asset('img/logo.jpg') }}">
+                    </figure>
+                    <div class="brand animated pulse">
+                        <div class="hidden-xs">Penya Barcelonista Cabanyal Ciutat Jardí</div>
+                        <div class="visible-xs">P. B. Cabanyal</div>
+                    </div>
+                </a>
+                <div class="user-btn pull-right visible-xs">
+                    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+                </div>
+
+            </div>
+            {{-- /container --}}
         </nav>
 
+        {{-- /top-menu --}}
+{{--
+        @guest
+            Invitado
+        @else
+            Registrado
+        @endguest --}}
+
+        <div class="main-menu">
+            <div class="container">
+                <ul>
+                    <li class="{{ Route::currentRouteName() == 'home' ? 'current' : '' }}">
+                        <a href="{{ route('home') }}">
+                            <i class="fa fa-home" aria-hidden="true"></i>
+                        </a>
+                    </li>
+                    <li class="{{ Route::currentRouteName() == 'penya' ? 'current' : '' }}">
+                        <a href="{{ route('penya') }}">
+                            Nuestra peña
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Instalaciones
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Galería
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Viajes
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Prensa
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Juegos
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Hazte socio!
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            Contacto
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        @yield('breadcrumb')
+
         @yield('content')
+
     </div>
+    {{-- wrap --}}
+
+    <div id="footer">
+        <div class="container">
+            © Copyright PB Cabanyal - Pagina Oficial de la Penya Barcelonista Cabanyal Ciutat Jardí
+        </div>
+    </div>
+
+    <!-- BackToTop Button -->
+    <a href="javascript:void(0);" id="scroll" title="Scroll to Top" style="display: none;">Top<span></span></a>
+
+
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    @yield('js')
+
+    <script>
+        $(document).ready(function(){
+            $(window).scroll(function(){
+                if($(this).scrollTop() > 100){
+                    $('#scroll').fadeIn();
+                }else{
+                    $('#scroll').fadeOut();
+                }
+            });
+            $('#scroll').click(function(){
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                return false;
+            });
+        });
+    </script>
 </body>
 </html>
