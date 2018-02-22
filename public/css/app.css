@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Acme|Pavanam);@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@import url(https://fonts.googleapis.com/css?family=Acme|Pavanam);@import url(https://fonts.googleapis.com/css?family=Francois+One);@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -8437,25 +8437,17 @@ body {
 
 .title-menu a {
   color: #ffffff;
+  display: inline-block;
+  padding: .75em 2em .5em 2em;
 }
 
 .title-menu a:hover {
   text-decoration: none;
 }
 
-.title-menu a .logo {
-  display: inline-block;
-  width: 48px;
-}
-
 .title-menu a .logo img {
-  width: 100%;
+  width: 60px;
   height: auto;
-}
-
-.title-menu a .brand {
-  display: inline-block;
-  padding: .75em 0;
 }
 
 .title-menu .menu-btn,
@@ -8514,8 +8506,45 @@ body {
   font-size: .9em;
 }
 
+.banners {
+  margin-bottom: 1.5em;
+}
+
+.banners .banner-penya {
+  border-radius: 8px;
+  color: #ffffff;
+  padding: 1em;
+}
+
+.banners .banner-penya.blue {
+  background: #0f2b56;
+  border: 1px solid #07152b;
+}
+
+.banners .banner-penya.red {
+  background: #9c1837;
+  border: 1px solid #701127;
+}
+
+.banners .banner-penya .title {
+  font-family: 'Francois One';
+  font-size: 1.25em;
+}
+
+.banners .banner-penya .detail {
+  font-size: .9em;
+}
+
 .margin10 {
   margin: 1em 0;
+}
+
+.note-editor.note-frame {
+  border: 1px solid #ccd0d2;
+}
+
+.note-btn {
+  border: 1px solid #d3e0e9;
 }
 
 @media (min-width: 768px) {
@@ -8530,18 +8559,15 @@ body {
   .title-menu {
     background: url(https://media-public.fcbarcelona.com/20157/28990530/725447/1.0/725447.jpg?t=1504262004000) no-repeat 50% 50%/cover;
     border-bottom: none;
-    height: 120px;
-    padding: 1.5em 0;
-    text-align: center;
   }
 
-  .title-menu .logo {
-    width: 72px;
+  .title-menu a {
+    display: block;
+    padding: .5em 0;
   }
 
-  .title-menu .brand {
-    margin-left: 1.5em;
-    font-size: 2em;
+  .title-menu a .brand {
+    font-size: 1.5em;
   }
 
   .main-menu {

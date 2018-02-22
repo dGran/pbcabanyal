@@ -11,9 +11,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- animate --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield('css')
 </head>
 <body>
@@ -28,7 +29,8 @@
                     <i class="fa fa-twitter-square animated jello" aria-hidden="true"></i>
                 </a>
                 <i class="fa fa-phone" aria-hidden="true"></i>
-                600 000 000
+                600 000 000 - <a href="mailto:pbcabanyal1106@gmail.com">pbcabanyal1106@gmail.com</a>
+
 {{--                 <a href="">
                     <span class="fa-stack animated jello">
                         <i class="fa fa-circle fa-stack-2x"></i>
@@ -52,10 +54,10 @@
                 </div>
                 <a href="{{ route('home') }}">
                     <figure class="logo hidden-xs">
-                        <img src="{{ asset('img/logo.jpg') }}">
+                        <img src="{{ asset('img/logo.png') }}">
                     </figure>
                     <div class="brand animated pulse">
-                        <div class="hidden-xs">Penya Barcelonista Cabanyal Ciutat Jardí</div>
+                        <div class="hidden-xs">Penya Barcelonista Cabanyal Ciutat Jardí - Valencia</div>
                         <div class="visible-xs">P. B. Cabanyal</div>
                     </div>
                 </a>
@@ -147,6 +149,10 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/summernote.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.10/lang/summernote-es-ES.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+
     @yield('js')
 
     <script>

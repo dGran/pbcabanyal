@@ -81,20 +81,19 @@ body {
 	text-align: center;
 	a {
 		color: #ffffff;
+		display: inline-block;
+		padding: .75em 2em .5em 2em;
 		&:hover {
 			text-decoration: none;
 		}
 		.logo {
-			display: inline-block;
-			width: 48px;
 			img {
-				width: 100%;
+				width: 60px;
 				height: auto;
 			}
 		}
 		.brand {
-			display: inline-block;
-			padding: .75em 0;
+			// display: block;
 		}
 	}
 	.menu-btn, .user-btn {
@@ -147,8 +146,44 @@ body {
 	}
 }
 
+.banners {
+	margin-bottom: 1.5em;
+	.banner-penya {
+		border-radius: 8px;
+		color: #ffffff;
+		padding: 1em;
+		&.blue {
+			background: #0f2b56;
+			border: 1px solid darken(#0f2b56, 10%);
+		}
+		&.red {
+			background: $brand-danger;
+			border: 1px solid darken($brand-danger, 10%);
+		}
+		.title {
+			font-family: 'Francois One';
+			font-size: 1.25em;
+		}
+		.detail {
+			font-size: .9em;
+		}
+	}
+
+}
+
 .margin10 {
 	margin: 1em 0;
+}
+
+//sumernote custom
+.note-editor {
+	// border: 1px solid red;
+	&.note-frame {
+		border: 1px solid $input-border;
+	}
+}
+.note-btn {
+	border: 1px solid $laravel-border-color;
 }
 
  @media (min-width: 768px) { //tablet or highter
@@ -161,16 +196,13 @@ body {
  	.title-menu {
 		background: url(https://media-public.fcbarcelona.com/20157/28990530/725447/1.0/725447.jpg?t=1504262004000) no-repeat 50% 50% / cover;
  		border-bottom: none;
- 		height: 120px;
- 		padding: 1.5em 0;
- 		text-align: center;
-		.logo {
-			width: 72px;
- 		}
-		.brand {
-			margin-left: 1.5em;
-			font-size: 2em;
-		}
+ 		a {
+ 			display: block;
+ 			padding: .5em 0;
+			.brand {
+				font-size: 1.5em;
+			}
+	 	}
  	}
 	.main-menu {
 	 	display: block;

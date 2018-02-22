@@ -8,7 +8,7 @@
 		  		<a href="{{ route('admin') }}">Panel de Admin</a>
 			</li>
 			<li class="breadcrumb-item active">
-				Inicio
+				Publicaciones
 			</li>
 		</ol>
 	</div>
@@ -23,10 +23,30 @@
 					@include('admin.partials.menu')
         		</div>
         		<div class="col-sm-8">
+
+					{{-- Session messages --}}
+					@if(session()->has('message'))
+						<div class="alert alert-success alert-auto-hide animated bounce">
+							{{ session()->get('message') }}
+						</div>
+					@endif
+
 					<div class="panel panel-default">
-						<div class="panel-heading">Panel heading without title</div>
+						<div class="panel-heading">
+							Publicaciones
+						</div>
 						<div class="panel-body">
-							Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, asperiores. Laboriosam ipsam fugiat tenetur cum, voluptates vel illum facere consectetur! Sapiente nisi, perferendis, provident rem corporis perspiciatis quisquam earum repellat!
+							<a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-primary">
+								Nueva publicación
+							</a>
+							<table class="table table-responsive">
+								@foreach ($posts as $post)
+								<tr>
+									<td>{{ $post->id }}</td>
+									<td>{{ $post->title }}</td>
+								</tr>
+								@endforeach
+  							</table>
 						</div>
 					</div>
         		</div>

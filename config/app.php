@@ -169,6 +169,7 @@ return [
          */
         Laravel\Socialite\SocialiteServiceProvider::class,
         Laraveles\Spanish\SpanishServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -229,6 +230,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+        'Date' => Jenssegers\Date\Date::class,
 
     ],
 

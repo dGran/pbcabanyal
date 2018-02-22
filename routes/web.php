@@ -26,4 +26,11 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/nuestra-penya', 'HomeController@penya')->name('penya');
 
-Route::get('/admin', 'AdminController@index')->name('admin');
+// Admin Routes
+Route::get('/admin', 'Admin\AdminController@index')->name('admin');
+
+// Admin Posts Routes
+Route::get('/admin/publicaciones', 'Admin\PostController@index')->name('admin.posts');
+Route::get('/admin/publicaciones/nueva', 'Admin\PostController@create')->name('admin.posts.create');
+Route::post('/admin/publicaciones/nueva', 'Admin\PostController@save')->name('admin.posts.save');
+

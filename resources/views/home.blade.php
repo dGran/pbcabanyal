@@ -41,7 +41,7 @@
                 </div>
             </div> --}}
 
-            <div class="">
+            <div class="ads">
                 <div class="alert alert-info alert-dismissible animated shake text-center" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <strong>Disponible la lotería de Navidad!</strong><br>Recoge tus boletos y reparte suerte. Este año nos toca!, buena suerte!
@@ -50,10 +50,58 @@
 
             </div>
 
+            <div class="banners">
+
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="banner-penya blue">
+                            <div class="title">
+                                Titulo
+                            </div>
+                            <div class="detail">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quas aperiam consectetur ratione
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="banner-penya red">
+                            <div class="title">
+                                Titulo
+                            </div>
+                            <div class="detail">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quas aperiam consectetur ratione
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="banner-penya blue">
+                            <div class="title">
+                                Titulo
+                            </div>
+                            <div class="detail">
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi quas aperiam consectetur ratione
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> {{-- banners --}}
+
 
             <div class="row">
                 <div class="col-md-4">
 
+
+                    <h4>La opinión del soçi</h4>
+                    <div class="opinion">
+                        <ul>
+                            <li><a href="">Esta el Barça en crisis?</a></li>
+                            <li><a href="">La era de Messi</a></li>
+                            <li><a href="">Sergi Roberto, el tapado</a></li>
+                        </ul>
+                        <a href="">Ver todas las opiniones</a>
+
+                    </div>
 
 
                     <h4>Próximas actividades</h4>
@@ -152,6 +200,7 @@
 
                     </div>
                     <!-- /Timeline -->
+                <!-- Timeline -->
 
                 </div>
                 <!-- /Column -->
@@ -163,10 +212,19 @@
                         <article class="panel panel-default">
 
                             <div class="panel-heading">
-                                <h4>{{ $post->title }}</h4>
+                                <div class="clearfix">
+                                    <span class="label label-info pull-left">
+                                        {{ $post->category->name }}
+                                    </span>
+                                    <small class="pull-right">
+                                        {{-- {{ $post->created_at->format('l d, F Y') }} --}}
+                                        {{ $post->created_at->diffForHumans() }}
+                                    </small>
+                                </div>
+                                <h3>{{ $post->title }}</h3>
                             </div>
                             <div class="panel-body">
-                                <p>{!! $post->description !!}</p>
+                                <p>{!! $post->detail !!}</p>
                             </div>
                             <div class="panel-footer">
                                 <div class="text-center">
