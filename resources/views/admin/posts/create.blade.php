@@ -49,13 +49,13 @@
 								Nueva publicación
 							</div> {{-- panel-heading --}}
 
-							<div class="panel-body">
+							<div class="panel-body fields">
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group">
 											<div class="form-group">
-												<label for="category">Categoría</label>
-												<select name="category" id="category" class="selectpicker form-control" data-live-search="true" style="z-index: 1;">
+												<label for="category">Categoría<span class="required">obligatorio</span></label>
+												<select name="category" id="category" class="selectpicker form-control">
 													@foreach ($categories as $category)
 														<option value="{{ $category->id }}">
 															{{ $category->name }}
@@ -64,16 +64,16 @@
 												</select>
 											</div>
 											<div class="form-group">
-												<label for="title">Título</label>
-												<input type="text" class="form-control" id="title" name="title" placeholder="Título" style="z-index: 0;">
+												<label for="title">Título<span class="required">obligatorio</span></label>
+												<input type="text" class="form-control" id="title" name="title" placeholder="Título">
 											</div>
 											<div class="form-group">
-												<label for="detail">Detalle</label>
-												<textarea name="detail" id="detail" class="form-control" cols="30" rows="10" style="z-index: 0;"></textarea>
+												<label for="detail">Detalle<span class="required">obligatorio</span></label>
+												<textarea name="detail" id="detail" class="form-control" cols="30" rows="10"></textarea>
 											</div>
-										</div>
-									</div>
-								</div>
+										</div> {{-- input group --}}
+									</div> {{-- col --}}
+								</div> {{-- row --}}
 							</div> {{-- panel-body --}}
 
 							<div class="panel-footer">

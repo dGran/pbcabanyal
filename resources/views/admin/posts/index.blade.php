@@ -40,12 +40,28 @@
 								Nueva publicación
 							</a>
 							<table class="table table-responsive">
-								@foreach ($posts as $post)
-								<tr>
-									<td>{{ $post->id }}</td>
-									<td>{{ $post->title }}</td>
-								</tr>
-								@endforeach
+								@if ($posts->count() > 0)
+									@foreach ($posts as $post)
+									<tr>
+										<td>{{ $post->id }}</td>
+										<td>{{ $post->title }}</td>
+										<td>
+											<a href="">
+												editar
+											</a>
+										</td>
+										<td>
+											<a href="">
+												borrar
+											</a>
+										</td>
+									</tr>
+									@endforeach
+								@else
+									<tr>
+										<td>No existen publicaciones</td>
+									</tr>
+								@endif
   							</table>
 						</div>
 					</div>

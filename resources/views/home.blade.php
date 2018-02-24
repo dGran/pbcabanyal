@@ -8,7 +8,7 @@
     <div class="container">
         <div class="margin10">
 
-            <p>Bienvenido a nuestra penya, nuestro punto de encuentro blaugrana. Si eres aficionado del Barcelona no lo dudes y <a href="">únete a nuestra familia barcelonista</a>, podrás ver todos los partidos de nuestro equipo con un gran ambiente, viajar a ver partidos de nuestro equipo, acceso a entradas, acceso a finales.</p>
+            <p><strong>Bienvenido a nuestra penya</strong>, nuestro punto de encuentro blaugrana. Si eres aficionado del Barcelona no lo dudes y <a href="">únete a nuestra familia barcelonista</a>, podrás ver todos los partidos de nuestro equipo con un gran ambiente, viajar a ver partidos de nuestro equipo, acceso a entradas, acceso a finales.</p>
 
         {{--     <div class="row">
                 <div class="col-md-4">
@@ -104,7 +104,7 @@
                     </div>
 
 
-                    <h4>Próximas actividades</h4>
+                    <h4>Próximos eventos</h4>
                 <!-- Timeline -->
                     <div class="timeline">
 
@@ -214,7 +214,11 @@
                             <div class="panel-heading">
                                 <div class="clearfix">
                                     <span class="label label-info pull-left">
-                                        {{ $post->category->name }}
+                                        @if ($post->category)
+                                            {{ $post->category->name }}
+                                        @else
+                                            sin categoría
+                                        @endif
                                     </span>
                                     <small class="pull-right">
                                         {{-- {{ $post->created_at->format('l d, F Y') }} --}}

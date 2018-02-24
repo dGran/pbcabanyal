@@ -35,7 +35,9 @@ class PostController extends Controller
 		$post->title = $request->title;
 		$post->detail = $request->detail;
 		$post->slug = str_slug($request->title, "-");
-		$post->category_id = $request->category;
+		if ($request->category > 0) {
+			$post->category_id = $request->category;
+		}
 		$post->visible = 1;
 		$post->save();
 

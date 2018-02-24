@@ -176,6 +176,9 @@ body {
 }
 
 //sumernote custom
+.note-toolbar {
+	z-index: 1;
+}
 .note-editor {
 	// border: 1px solid red;
 	&.note-frame {
@@ -186,7 +189,25 @@ body {
 	border: 1px solid $laravel-border-color;
 }
 
- @media (min-width: 768px) { //tablet or highter
+
+///admin classes
+
+.fields {
+	input {
+		z-index: 1;
+	}
+	.required {
+		font-size: .8em;
+		color: lighten($text-color, 30%);
+		margin-left: .5em;
+	}
+	.input-group {
+		display: block;
+	}
+}
+
+
+@media (min-width: 768px) { //tablet or highter
  	body {
  		background: $body-bg;
  	}

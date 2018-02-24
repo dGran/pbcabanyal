@@ -8539,12 +8539,30 @@ body {
   margin: 1em 0;
 }
 
+.note-toolbar {
+  z-index: 1;
+}
+
 .note-editor.note-frame {
   border: 1px solid #ccd0d2;
 }
 
 .note-btn {
   border: 1px solid #d3e0e9;
+}
+
+.fields input {
+  z-index: 1;
+}
+
+.fields .required {
+  font-size: .8em;
+  color: #b1b7ba;
+  margin-left: .5em;
+}
+
+.fields .input-group {
+  display: block;
 }
 
 @media (min-width: 768px) {
