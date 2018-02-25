@@ -24,8 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $opinions = Post::where('category_id', '=', 2)
+            ->orderBy('created_at', 'desc')->paginate(5);
         $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-        return view('home', compact('posts'));
+        return view('home', compact('posts', 'opinions'));
     }
 
     public function penya()

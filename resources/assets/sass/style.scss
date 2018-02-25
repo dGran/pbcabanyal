@@ -170,6 +170,24 @@ body {
 	}
 
 }
+.post {
+	postion: realative;
+	.panel-heading {
+		.category {
+			postion: absolute;
+			left: 1em;
+			top: 5em;
+		}
+		.title {
+			font-family: 'Francois One';
+			font-size: 1.5em;
+		}
+		.date {
+			font-size: .85em;
+			color: lighten($text-color, 10%);
+		}
+	}
+}
 
 .margin10 {
 	margin: 1em 0;

@@ -45,14 +45,24 @@
 									<tr>
 										<td>{{ $post->id }}</td>
 										<td>{{ $post->title }}</td>
-										<td>
-											<a href="">
-												editar
+										<td width="24">
+											<a href="" title="Publicar en facebook">
+												<i class="fab fa-facebook"></i>
 											</a>
 										</td>
-										<td>
-											<a href="">
-												borrar
+										<td width="24">
+											<a href="" title="Publicar en twitter">
+												<i class="fab fa-twitter"></i>
+											</a>
+										</td>
+										<td width="24">
+											<a href="" title="Editar publicación">
+												<i class="fas fa-edit"></i>
+											</a>
+										</td>
+										<td width="24">
+											<a href="" title="Eliminar publicación">
+												<i class="fas fa-trash"></i>
 											</a>
 										</td>
 									</tr>

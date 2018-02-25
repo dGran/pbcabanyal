@@ -29,5 +29,4 @@ class Post extends Model
 		return $this->hasOne(PostCategory::class, 'id', 'category_id');
 	}
 
-
 }
