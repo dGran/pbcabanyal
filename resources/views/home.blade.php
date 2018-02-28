@@ -210,18 +210,13 @@
                     @foreach ($posts as $post)
 
                         <article class="panel panel-default post">
-
                             <div class="panel-heading">
-                                <span class="label label-info">
-                                    @if ($post->category)
-                                        <span class="category">
-                                            {{ $post->category->name }}
-                                        </span>
-                                    @else
-                                        <span class="category">
-                                            sin categoría
-                                        </span>
-                                    @endif
+                                <span class="category">
+                                @if ($post->category)
+                                    {{ $post->category->name }}
+                                @else
+                                    sin categoría
+                                @endif
                                 </span>
                                 <div class="clearfix">
                                     <small class="pull-right">

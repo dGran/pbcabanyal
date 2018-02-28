@@ -171,11 +171,18 @@ body {
 
 }
 .post {
-	postion: realative;
+	// postion: relative;
 	.panel-heading {
 		.category {
+			background: $brand-primary;
+			border: 1px solid darken($brand-primary, 10%);
+			border-radius: 4px;
+			color: #ffffff;
+			font-size: .85em;
+			padding: .25em .5em;
+
 			postion: absolute;
-			left: 1em;
+			left: 5em;
 			top: 5em;
 		}
 		.title {
