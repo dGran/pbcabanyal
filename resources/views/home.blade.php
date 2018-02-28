@@ -95,9 +95,9 @@
                     <h4>La opinión del soçi</h4>
                     <div class="opinion">
                         <ul>
-                            <li><a href="">Esta el Barça en crisis?</a></li>
-                            <li><a href="">La era de Messi</a></li>
-                            <li><a href="">Sergi Roberto, el tapado</a></li>
+                        @foreach ($opinions as $opinion)
+                            <li><a href="">{{$opinion->title}}</a></li>
+                        @endforeach
                         </ul>
                         <a href="">Ver todas las opiniones</a>
 
@@ -209,23 +209,24 @@
 
                     @foreach ($posts as $post)
 
-                        <article class="panel panel-default">
-
+                        <article class="panel panel-default post">
                             <div class="panel-heading">
+                                <span class="category">
+                                @if ($post->category)
+                                    {{ $post->category->name }}
+                                @else
+                                    sin categoría
+                                @endif
+                                </span>
                                 <div class="clearfix">
-                                    <span class="label label-info pull-left">
-                                        @if ($post->category)
-                                            {{ $post->category->name }}
-                                        @else
-                                            sin categoría
-                                        @endif
-                                    </span>
                                     <small class="pull-right">
                                         {{-- {{ $post->created_at->format('l d, F Y') }} --}}
-                                        {{ $post->created_at->diffForHumans() }}
+                                        <span class="date">
+                                            {{ $post->created_at->diffForHumans() }}
+                                        </span>
                                     </small>
                                 </div>
-                                <h3>{{ $post->title }}</h3>
+                                <span class="title">{{ $post->title }}</span>
                             </div>
                             <div class="panel-body">
                                 <p>{!! $post->detail !!}</p>

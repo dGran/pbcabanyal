@@ -99,17 +99,15 @@
         		dialogsFade: true,
         		fontNames: ['Arial', 'Arial Black'],
         		lang: 'es-ES',
-				toolbar: [
-				// [groupName, [list of button]]
-					['style', ['bold', 'italic', 'underline', 'clear']],
-					['font', ['strikethrough']],
-					['fontsize', ['fontsize']],
-					['color', ['color']],
-					['para', ['ul', 'ol', 'paragraph']],
-					['height', ['height']],
-					['insert', ['link', 'picture']]
-				],
-
+				height: 200,
+	 		    toolbar: [
+		 		    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+		 		    ['fontsize', ['color', 'fontsize']],
+		 		    ['para', ['ul', 'ol', 'paragraph']],
+		 		    ['table', ['table']],
+		 		    ['insert', ['hr', 'link', 'picture', 'video']],
+		 		    ['view', ['fullscreen']],
+	 		  	]
         	});
         });
     </script>

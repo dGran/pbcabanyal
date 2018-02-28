@@ -170,6 +170,31 @@ body {
 	}
 
 }
+.post {
+	// postion: relative;
+	.panel-heading {
+		.category {
+			background: $brand-primary;
+			border: 1px solid darken($brand-primary, 10%);
+			border-radius: 4px;
+			color: #ffffff;
+			font-size: .85em;
+			padding: .25em .5em;
+
+			postion: absolute;
+			left: 5em;
+			top: 5em;
+		}
+		.title {
+			font-family: 'Francois One';
+			font-size: 1.5em;
+		}
+		.date {
+			font-size: .85em;
+			color: lighten($text-color, 10%);
+		}
+	}
+}
 
 .margin10 {
 	margin: 1em 0;
