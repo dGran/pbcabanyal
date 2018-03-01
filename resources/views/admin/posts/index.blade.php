@@ -31,14 +31,16 @@
 						</div>
 					@endif
 
-					<div class="panel panel-default">
+					<div class="panel panel-default admin-register">
 						<div class="panel-heading">
-							Publicaciones
+							<span class="name">
+								Publicaciones
+							</span>
+							<a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-success btn-sm action">
+								<i class="fa fa-plus" aria-hidden="true"></i>
+							</a>
 						</div>
 						<div class="panel-body">
-							<a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-primary">
-								Nueva publicación
-							</a>
 							<table class="table table-responsive">
 								@if ($posts->count() > 0)
 									@foreach ($posts as $post)

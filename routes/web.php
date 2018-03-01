@@ -34,3 +34,7 @@ Route::get('/admin/publicaciones', 'Admin\PostController@index')->name('admin.po
 Route::get('/admin/publicaciones/nueva', 'Admin\PostController@create')->name('admin.posts.create');
 Route::post('/admin/publicaciones/nueva', 'Admin\PostController@save')->name('admin.posts.save');
 
+Route::get('/admin/categorias', 'Admin\PostCategoryController@index')->name('admin.categories');
+Route::get('/admin/categorias/nueva', 'Admin\PostCategoryController@create')->name('admin.categories.create');
+Route::post('/admin/categorias/nueva', 'Admin\PostCategoryController@save')->name('admin.categories.save');
+Route::delete('/admin/categorias/eliminar/{id}', 'Admin\PostCategoryController@delete')->name('admin.categories.delete');

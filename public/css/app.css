@@ -8587,6 +8587,52 @@ body {
   display: block;
 }
 
+.admin-register .panel-heading {
+  overflow: hidden;
+}
+
+.admin-register .panel-heading .name {
+  float: left;
+  font-family: 'Francois One';
+  font-size: 1.25em;
+  line-height: 1.65em;
+}
+
+.admin-register .panel-heading .action {
+  float: right;
+}
+
+.admin-register .panel-body {
+  padding: 0;
+}
+
+.admin-register .panel-body table {
+  margin: 0;
+  border: none;
+}
+
+.admin-register .panel-body table tr td {
+  border-top: none;
+  border-bottom: 1px solid #e7e9ea;
+  vertical-align: middle;
+}
+
+.admin-register .panel-body table tr:last-child td {
+  border: none;
+}
+
+.admin-register .panel-footer {
+  border-top: none;
+  background: #ffffff;
+  padding: 0;
+  text-align: right;
+}
+
+.admin-register .panel-footer .pagination {
+  padding: .75em 1em .25em 1em;
+  margin: 0em;
+}
+
 @media (min-width: 768px) {
   body {
     background: #f5f8fa;
