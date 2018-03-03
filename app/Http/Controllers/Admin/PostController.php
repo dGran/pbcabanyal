@@ -29,7 +29,7 @@ class PostController extends Controller
         		'detail' => 'required'
         	]);
         } catch(\Exception $e) {
-            return back()->with('error', 'Debes completar todos los campos');
+            return back()->with('error', 'Debes completar todos los campos obligatorios');
         }
 		$post = new Post;
 		$post->title = $request->title;

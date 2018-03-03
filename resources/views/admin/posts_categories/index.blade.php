@@ -31,73 +31,104 @@
 						</div>
 					@endif
 
-					<div class="panel panel-default admin-register">
+					<div class="panel panel-default admin-register-list">
+
 						<div class="panel-heading">
 							<span class="name">
 								Categorías
 							</span>
-							<a href="{{ route('admin.categories.create') }}" type="button" class="btn btn-success btn-sm action">
-								<i class="fa fa-plus" aria-hidden="true"></i>
+							<a id="btnAdd" href="{{ route('admin.categories.create') }}" type="button" class="btn btn-success btn-sm action">
+								<i class="fa fa-plus"></i><span class="hidden-xs">&nbsp;&nbsp;Nueva categoría</span>
 							</a>
 						</div>
+
 						<div class="panel-body">
-							<table class="table table-responsive">
+							<table class="table table-hover table-responsive">
 								@if ($categories->count() > 0)
 									@foreach ($categories as $category)
 									<tr>
+
 										<td width="32" align="right">
-											{{ $category->id }}
+											<small>#{{ $category->id }}</small>
 										</td>
+
 										<td>
 											{{ $category->name }}
 										</td>
-										<td width="48">
-											@if ($category->posts->count() > 0)
-												<small>
-													<i class="far fa-comment"></i> {{ $category->posts->count() }}
-												</small>
-											@endif
-										</td>
-										<td width="24">
-											@if ($category->posts->count() > 0)
-                    							<button class="btn btn-danger btn-sm" disabled>
-                    								<i class="fas fa-trash"></i>
-                    							</button>
-											@else
-												<form action="{{ route('admin.categories.delete', $category->id) }}" method="post">
-													{{ csrf_field() }}
-													{{ method_field('delete') }}
-	                    							<button class="btn btn-danger btn-sm" type="submit">
-	                    								<i class="fas fa-trash"></i>
-	                    							</button>
-	                							</form>
-	                						@endif
 
+										<td class="hidden-xs actions">
+											<ul>
+												@include('admin.posts_categories.list_actions')
+											</ul>
 										</td>
-										<td width="24">
-											<a href="" title="Eliminar publicación">
-												<i class="fas fa-trash"></i>
-											</a>
+										<td width="24" class="visible-xs actions dropdown">
+						                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						                        <i class="fas fa-ellipsis-v dropdown-toggle"></i>
+						                    </a>
+
+						                    <ul class="dropdown-menu pull-right animated bounceIn" role="menu">
+						                        @include('admin.posts_categories.list_actions')
+						                    </ul>
 										</td>
+
 									</tr>
 									@endforeach
 								@else
 									<tr>
-										<td>Lista vacía...</td>
+										<td class="empty">Lista vacía...</td>
 									</tr>
 								@endif
   							</table>
 						</div> {{-- panel-body --}}
-						@if ($categories->links())
-							<div class="panel-footer">
-								{{ $categories->links() }}
-							</div>
-						@endif
+
+						<div class="panel-footer">
+							<table>
+								<tr>
+									<td class="reg-info">
+										Registros: {{ $categories->firstItem() }}-{{ $categories->lastItem() }} de {{ $categories->total() }}
+									</td>
+									<td class="navigation">
+										{{ $categories->links() }}
+									</td>
+								</tr>
+							</table>
+						</div> {{-- panel-footer --}}
+
 					</div> {{-- admin-register --}}
+
         		</div>
         	</div>
 
         </div>
 	</div>
 
+@endsection
+
+@section('js')
+	<script>
+		function confirmDelete(e, id, name) {
+			e.preventDefault();
+
+			swal({
+				title: "¿Estás seguro?",
+				text: 'Se va a eliminar la categoría "' + name + '". No se podrán deshacer los cambios!',
+				// type: "warning",
+				showCancelButton: true,
+				confirmButtonText: "Sí",
+				cancelButtonText: "No",
+				closeOnConfirm: true
+			},
+			function(isConfirmed) {
+				if (isConfirmed) {
+					$("#formDelete"+id).submit();
+				}
+			});
+		}
+
+        Mousetrap.bind(['command+a', 'ctrl+a'], function() {
+        	var url = $("#btnAdd").attr('href');
+        	$(location).attr('href', url);
+            return false;
+        });
+	</script>
 @endsection

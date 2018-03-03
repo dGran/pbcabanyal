@@ -2,8 +2,10 @@
 	<li class="list-group-item">
 		@if (Route::currentRouteName() == 'admin.categories' || Route::currentRouteName() == 'admin.categories.create')
 			<span>
-				<i class="fas fa-angle-double-right"></i>
-				Categorías
+				<strong>
+					<i class="fas fa-angle-double-right"></i>
+					Categorías
+				</strong>
 			</span>
 		@else
 			<a href="{{ route('admin.categories') }}">Categorías</a>
@@ -12,8 +14,10 @@
 	<li class="list-group-item">
 		@if (Route::currentRouteName() == 'admin.posts' || Route::currentRouteName() == 'admin.posts.create')
 			<span>
-				<i class="fas fa-angle-double-right"></i>
-				Publicaciones
+				<strong>
+					<i class="fas fa-angle-double-right"></i>
+					Publicaciones
+				</strong>
 			</span>
 		@else
 			<a href="{{ route('admin.posts') }}">Publicaciones</a>

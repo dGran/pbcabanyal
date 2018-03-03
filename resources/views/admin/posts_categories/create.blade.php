@@ -32,15 +32,20 @@
 						</div>
 					@endif
 					<form
-						id="formNewPost"
+						id="formNew"
 						role="form"
 						method="POST"
 						action="{{ route('admin.categories.save') }}">
 						{{ csrf_field() }}
-						<div class="panel panel-default">
+						<div class="panel panel-default admin-register-form">
 
 							<div class="panel-heading">
-								Nueva categoría
+								<span class="name">
+									Nueva categoría
+								</span>
+								<a id="btnAdd" href="{{ route('admin.categories') }}" type="button" class="btn btn-default btn-sm action">
+									<i class="fas fa-list"></i><span class="hidden-xs">&nbsp;&nbsp;Volver al listado</span>
+								</a>
 							</div> {{-- panel-heading --}}
 
 							<div class="panel-body fields">
@@ -58,7 +63,7 @@
 
 							<div class="panel-footer">
 								<button type="reset" class="btn btn-default" data-dismiss="modal">Reset</button>
-								<button type="submit" class="btn btn-primary">Guardar cambios</button>
+								<button type="submit" class="btn btn-success">Guardar cambios</button>
 							</div> {{-- panel-footer --}}
 
 						</div> {{-- panel --}}
@@ -68,4 +73,30 @@
         </div> {{-- margin10 --}}
 	</div> {{-- container --}}
 
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function(){
+        	// put focus on input
+        	$("#name").focus();
+
+            $(window).scroll(function(){
+                if($(this).scrollTop() > 100){
+                    $('#scroll').fadeIn();
+                }else{
+                    $('#scroll').fadeOut();
+                }
+            });
+            $('#scroll').click(function(){
+                $("html, body").animate({ scrollTop: 0 }, 600);
+                return false;
+            });
+        });
+
+        Mousetrap.bind(['command+s', 'ctrl+s'], function() {
+            $("#formNew").submit();
+            return false;
+        });
+    </script>
 @endsection

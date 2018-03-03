@@ -26,7 +26,7 @@ class PostCategoryController extends Controller
         		'name' => 'required',
         	]);
         } catch(\Exception $e) {
-            return back()->with('error', 'Debes completar todos los campos');
+            return back()->with('error', 'Debes completar todos los campos obligatorios');
         }
 		$category = new PostCategory;
 		$category->name = $request->name;
