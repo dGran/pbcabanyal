@@ -4153,29 +4153,29 @@ fieldset[disabled] .btn-primary.focus {
 
 .btn-success {
   color: #fff;
-  background-color: #09baab;
-  border-color: #08a295;
+  background-color: #8ec477;
+  border-color: #7fbc65;
 }
 
 .btn-success:focus,
 .btn-success.focus {
   color: #fff;
-  background-color: #07897e;
-  border-color: #022825;
+  background-color: #70b553;
+  border-color: #447131;
 }
 
 .btn-success:hover {
   color: #fff;
-  background-color: #07897e;
-  border-color: #05675f;
+  background-color: #70b553;
+  border-color: #609f45;
 }
 
 .btn-success:active,
 .btn-success.active,
 .open > .btn-success.dropdown-toggle {
   color: #fff;
-  background-color: #07897e;
-  border-color: #05675f;
+  background-color: #70b553;
+  border-color: #609f45;
 }
 
 .btn-success:active:hover,
@@ -4188,8 +4188,8 @@ fieldset[disabled] .btn-primary.focus {
 .open > .btn-success.dropdown-toggle:focus,
 .open > .btn-success.dropdown-toggle.focus {
   color: #fff;
-  background-color: #05675f;
-  border-color: #022825;
+  background-color: #609f45;
+  border-color: #447131;
 }
 
 .btn-success:active,
@@ -4207,12 +4207,12 @@ fieldset[disabled] .btn-primary.focus {
 fieldset[disabled] .btn-success:hover,
 fieldset[disabled] .btn-success:focus,
 fieldset[disabled] .btn-success.focus {
-  background-color: #09baab;
-  border-color: #08a295;
+  background-color: #8ec477;
+  border-color: #7fbc65;
 }
 
 .btn-success .badge {
-  color: #09baab;
+  color: #8ec477;
   background-color: #fff;
 }
 
@@ -6166,12 +6166,12 @@ a.label:focus {
 }
 
 .label-success {
-  background-color: #09baab;
+  background-color: #8ec477;
 }
 
 .label-success[href]:hover,
 .label-success[href]:focus {
-  background-color: #07897e;
+  background-color: #70b553;
 }
 
 .label-info {
@@ -6493,7 +6493,7 @@ a.thumbnail.active {
 }
 
 .progress-bar-success {
-  background-color: #09baab;
+  background-color: #8ec477;
 }
 
 .progress-striped .progress-bar-success {
@@ -8627,20 +8627,6 @@ body {
   border: 1px solid #d3e0e9;
 }
 
-.fields input {
-  z-index: 1;
-}
-
-.fields .required {
-  font-size: .8em;
-  color: #b1b7ba;
-  margin-left: .5em;
-}
-
-.fields .input-group {
-  display: block;
-}
-
 .admin-register-list .panel-heading {
   background: #f5f5f5;
   border-bottom: none;
@@ -8667,6 +8653,10 @@ body {
   border: none;
 }
 
+.admin-register-list .panel-body table tr:hover {
+  background: #fffcfa;
+}
+
 .admin-register-list .panel-body table tr td {
   border-bottom: none;
   border-top: 1px solid #e7e9ea;
@@ -8678,36 +8668,31 @@ body {
 }
 
 .admin-register-list .panel-body table tr .actions ul {
-  margin: 0;
   list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .admin-register-list .panel-body table tr .actions ul li {
-  display: inline-block;
+  border-bottom: 1px solid #d3e0e9;
+  display: block;
+  margin: 0;
 }
 
-.admin-register-list .panel-body table tr .actions ul li a {
-  color: #636b6f;
-  margin-right: .25em;
+.admin-register-list .panel-body table tr .actions ul li:hover {
+  background: #f5f5f5;
 }
 
-.admin-register-list .panel-body table tr .actions ul li a:hover {
-  color: #4b5154;
-  text-decoration: none;
-}
-
-.admin-register-list .panel-body table tr .actions ul li form {
-  display: inline;
-}
-
-.admin-register-list .panel-body table tr .actions ul li button {
-  padding: 0;
-  border: none;
+.admin-register-list .panel-body table tr .actions ul li a,
+.admin-register-list .panel-body table tr .actions ul li button,
+.admin-register-list .panel-body table tr .actions ul li .publications {
   background: none;
-}
-
-.admin-register-list .panel-body table tr .actions ul li button:hover {
-  color: #4b5154;
+  border: none;
+  color: slategrey;
+  display: block;
+  padding: .25em .5em;
+  text-align: left;
+  width: 100%;
 }
 
 .admin-register-list .panel-body table tr .actions ul li .delete {
@@ -8735,15 +8720,20 @@ body {
 }
 
 .admin-register-list .panel-body table tr .actions ul li .publications {
-  margin-right: 1em;
-  font-size: .8em;
+  color: #b1b7ba;
+  font-size: .9em;
+  padding: .5em;
 }
 
 .admin-register-list .panel-body table tr .actions .dropdown-toggle {
   margin-right: .5em;
 }
 
-.admin-register-list .panel-body table tr .empty {
+.admin-register-list .panel-body table .empty:hover {
+  background: none;
+}
+
+.admin-register-list .panel-body table .empty td {
   color: #b1b7ba;
   padding: 1.5em 0;
   text-align: center;
@@ -8801,6 +8791,20 @@ body {
   text-align: right;
 }
 
+.admin-register-form .fields input {
+  z-index: 1;
+}
+
+.admin-register-form .fields .required {
+  font-size: .8em;
+  color: #b1b7ba;
+  margin-left: .5em;
+}
+
+.admin-register-form .fields .input-group {
+  display: block;
+}
+
 .sweet-alert h2 {
   font-size: 1.25em;
   margin: 0;
@@ -8842,6 +8846,30 @@ body {
 
   .main-menu {
     display: block;
+  }
+
+  .admin-register-list .panel-body table tr .actions ul li {
+    border-bottom: none;
+    display: inline-block;
+  }
+
+  .admin-register-list .panel-body table tr .actions ul li:hover {
+    background: none;
+  }
+
+  .admin-register-list .panel-body table tr .actions ul li a,
+  .admin-register-list .panel-body table tr .actions ul li button {
+    padding: 0 .25em;
+  }
+
+  .admin-register-list .panel-body table tr .actions ul li a:hover {
+    color: #5a6773;
+  }
+
+  .admin-register-list .panel-body table tr .actions ul li .publications {
+    margin-right: 1em;
+    font-size: .8em;
+    padding: 0;
   }
 }
 

@@ -11,7 +11,7 @@
 				<a href="{{ route('admin.categories') }}">Categorías</a>
 			</li>
 			<li class="breadcrumb-item active">
-				Nueva
+				{{ $category->name }}
 			</li>
 		</ol>
 	</div>
@@ -26,7 +26,6 @@
 					@include('admin.partials.menu')
         		</div>
         		<div class="col-sm-8">
-
 					{{-- errors --}}
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger animated shake">
@@ -39,18 +38,18 @@
 					    </div>
 					@endif
 					{{-- /errors --}}
-
 					<form
-						id="formNew"
+						id="formEdit"
 						role="form"
 						method="POST"
-						action="{{ route('admin.categories.save') }}">
+						action="{{ route('admin.categories.update', $category->slug) }}">
+						{{ method_field('PUT') }}
 						{{ csrf_field() }}
 						<div class="panel panel-default admin-register-form">
 
 							<div class="panel-heading">
 								<span class="name">
-									Nueva categoría
+									Editar categoría
 								</span>
 								<a id="btnAdd" href="{{ route('admin.categories') }}" type="button" class="btn btn-default btn-sm action">
 									<i class="fas fa-list"></i><span class="hidden-xs">&nbsp;&nbsp;Volver al listado</span>
@@ -63,7 +62,7 @@
 										<div class="input-group">
 											<div class="form-group">
 												<label for="name">Nombre<span class="required">obligatorio</span></label>
-												<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="{{ old('name') }}">
+												<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="{{ $category->name }}">
 											</div>
 										</div> {{-- input group --}}
 									</div> {{-- col --}}

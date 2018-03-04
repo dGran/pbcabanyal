@@ -10,13 +10,14 @@ $panel-default-border: $laravel-border-color;
 $panel-inner-border: $laravel-border-color;
 
 $brand-primary: slategrey !default;
-$brand-success: #09baab !default;
+$brand-success: #8ec477 !default;
 $brand-info: #5bc0de !default;
 $brand-warning: #f0ad4e !default;
 $brand-danger: #e45c5c !default;
 
 //special colors
-$brand-red: #9c1837 !default;
+$brand-custom-red: #9c1837 !default;
+$brand-custom-green: #09baab !default;
 
 // Typography
 $icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";

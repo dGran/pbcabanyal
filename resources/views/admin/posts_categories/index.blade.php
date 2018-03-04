@@ -66,7 +66,7 @@
 						                        <i class="fas fa-ellipsis-v dropdown-toggle"></i>
 						                    </a>
 
-						                    <ul class="dropdown-menu pull-right animated bounceIn" role="menu">
+						                    <ul class="dropdown-menu pull-right animated slideInRight" role="menu">
 						                        @include('admin.posts_categories.list_actions')
 						                    </ul>
 										</td>
@@ -74,8 +74,8 @@
 									</tr>
 									@endforeach
 								@else
-									<tr>
-										<td class="empty">Lista vacía...</td>
+									<tr class="empty">
+										<td>Lista vacía...</td>
 									</tr>
 								@endif
   							</table>

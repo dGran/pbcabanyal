@@ -21,7 +21,7 @@ class CreatePostsTable extends Migration
             $table->longText('detail');
             $table->boolean('visible')->default(true);
             $table->boolean('author_view')->default(true);
-            $table->string('slug');
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }
