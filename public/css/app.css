@@ -8630,17 +8630,21 @@ body {
 .admin-register-list .panel-heading {
   background: #f5f5f5;
   border-bottom: none;
-  overflow: hidden;
+  padding: 0;
 }
 
-.admin-register-list .panel-heading .name {
-  float: left;
+.admin-register-list .panel-heading .title {
   font-family: 'Francois One';
   font-size: 1.25em;
+  border-bottom: 1px solid #d3e0e9;
+  padding: .5rem .5em;
 }
 
-.admin-register-list .panel-heading .action {
-  float: right;
+.admin-register-list .panel-heading .buttons {
+  padding: .5rem;
+}
+
+.admin-register-list .panel-heading .buttons button {
   padding: .25em 1.5em;
 }
 

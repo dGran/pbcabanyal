@@ -34,16 +34,38 @@
 					<div class="panel panel-default admin-register-list">
 
 						<div class="panel-heading">
-							<span class="name">
+							<div class="title">
 								Categorías
-							</span>
-							<a id="btnAdd" href="{{ route('admin.categories.create') }}" type="button" class="btn btn-success btn-sm action">
-								<i class="fa fa-plus"></i><span class="hidden-xs">&nbsp;&nbsp;Nueva categoría</span>
-							</a>
+							</div>
+							<div class="buttons clearfix">
+								<div class="pull-left">
+									<form class="form-inline">
+  										<div class="form-group">
+							 			    <div class="input-group">
+												<div class="input-group-addon"><i class="fas fa-filter"></i></div>
+												<input type="text" class="form-control" placeholder="Buscar...">
+										    </div>
+								 		</div>
+								 	</form>
+
+								</div>
+								<div class="pull-right">
+									<a id="btnAdd" href="{{ route('admin.categories.create') }}" type="button" class="btn btn-success btn-sm">
+										<i class="fa fa-plus"></i><span class="hidden-xs">&nbsp;&nbsp;Nueva categoría</span>
+									</a>
+								</div>
+							</div>
 						</div>
 
 						<div class="panel-body">
 							<table class="table table-hover table-responsive">
+								<thead>
+									<tr>
+										<td>#</td>
+										<td>Nombre</td>
+										<td></td>
+									</tr>
+								</thead>
 								@if ($categories->count() > 0)
 									@foreach ($categories as $category)
 									<tr>
