@@ -1,6 +1,6 @@
 <li>
 	@if ($category->posts->count() > 0)
-		<span class="publications" title="Publicaciones">
+		<span class="publications">
 			<div class="hidden-xs">
 				<i class="far fa-file-alt"></i>&nbsp;{{ $category->posts->count() }}
 			</div>
@@ -11,7 +11,7 @@
 	@endif
 </li>
 <li>
-	<a href="{{ route('admin.categories.edit', $category->slug) }}" title="Editar publicación">
+	<a href="{{ route('admin.categories.edit', $category->slug) }}">
 		<div class="hidden-xs">
 			<i class="fas fa-edit"></i>
 		</div>

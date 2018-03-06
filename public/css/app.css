@@ -8411,6 +8411,10 @@ body {
   /* The html and body elements cannot have any padding or margin. */
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 #wrap {
   background: #f5f8fa;
   min-height: 100%;
@@ -8424,7 +8428,7 @@ body {
 /* Set the fixed height of the footer here */
 
 #footer {
-  background-color: #e45c5c;
+  background-color: #9c1837;
   color: #ffffff;
   font-size: .9em;
   height: 35px;
@@ -8495,10 +8499,6 @@ body {
   padding: .75em 2em .5em 2em;
 }
 
-.title-menu a:hover {
-  text-decoration: none;
-}
-
 .title-menu a .logo img {
   width: 60px;
   height: auto;
@@ -8513,9 +8513,9 @@ body {
 }
 
 .main-menu {
-  background: #e45c5c;
-  border-top: 1px solid #dd3030;
-  border-bottom: 1px solid #dd3030;
+  background: #9c1837;
+  border-top: 1px solid #701127;
+  border-bottom: 1px solid #701127;
   display: none;
   padding: 0;
 }
@@ -8532,14 +8532,13 @@ body {
 }
 
 .main-menu ul li:hover {
-  background: #dd3030;
+  background: #701127;
 }
 
 .main-menu ul li a {
   color: white;
   display: block;
   padding: .75em;
-  text-decoration: none;
 }
 
 .main-menu ul li .current {
@@ -8615,10 +8614,6 @@ body {
   margin: 1em 0;
 }
 
-.note-toolbar {
-  z-index: 1;
-}
-
 .note-editor.note-frame {
   border: 1px solid #ccd0d2;
 }
@@ -8633,19 +8628,30 @@ body {
   padding: 0;
 }
 
+.admin-register-list .panel-heading form {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
 .admin-register-list .panel-heading .title {
   font-family: 'Francois One';
   font-size: 1.25em;
   border-bottom: 1px solid #d3e0e9;
-  padding: .5rem .5em;
+  padding: 1rem .75em;
 }
 
 .admin-register-list .panel-heading .buttons {
-  padding: .5rem;
+  padding: 1rem;
 }
 
 .admin-register-list .panel-heading .buttons button {
   padding: .25em 1.5em;
+}
+
+.admin-register-list .panel-heading .buttons .filter-info {
+  font-size: .8em;
+  color: #b1b7ba;
 }
 
 .admin-register-list .panel-body {
@@ -8657,14 +8663,40 @@ body {
   border: none;
 }
 
+.admin-register-list .panel-body table thead tr {
+  background: #f5f5f5;
+}
+
+.admin-register-list .panel-body table thead tr td {
+  font-family: 'Francois One';
+}
+
+.admin-register-list .panel-body table thead tr .title-actions {
+  text-align: right;
+}
+
 .admin-register-list .panel-body table tr:hover {
-  background: #fffcfa;
+  background: #fdf6ee;
 }
 
 .admin-register-list .panel-body table tr td {
   border-bottom: none;
   border-top: 1px solid #e7e9ea;
   vertical-align: middle;
+}
+
+.admin-register-list .panel-body table tr .indicator {
+  display: none;
+  text-align: right;
+  padding: 0;
+}
+
+.admin-register-list .panel-body table tr .indicator .indicator-img {
+  display: none;
+}
+
+.admin-register-list .panel-body table tr .category {
+  font-size: .85em;
 }
 
 .admin-register-list .panel-body table tr .actions {
@@ -8795,10 +8827,6 @@ body {
   text-align: right;
 }
 
-.admin-register-form .fields input {
-  z-index: 1;
-}
-
 .admin-register-form .fields .required {
   font-size: .8em;
   color: #b1b7ba;
@@ -8850,6 +8878,27 @@ body {
 
   .main-menu {
     display: block;
+  }
+
+  .admin-register-list .panel-body table thead tr .title-actions {
+    padding-right: .75em;
+  }
+
+  .admin-register-list .panel-body table tr:hover .indicator .indicator-img {
+    display: block;
+  }
+
+  .admin-register-list .panel-body table tr:hover .actions {
+    opacity: 1;
+  }
+
+  .admin-register-list .panel-body table tr .indicator {
+    display: table-cell;
+  }
+
+  .admin-register-list .panel-body table tr .actions {
+    opacity: .5;
+    width: 150px;
   }
 
   .admin-register-list .panel-body table tr .actions ul li {

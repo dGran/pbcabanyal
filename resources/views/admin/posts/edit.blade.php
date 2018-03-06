@@ -8,10 +8,10 @@
 		  		<a href="{{ route('admin') }}">Panel de Admin</a>
 			</li>
 			<li class="breadcrumb-item active">
-				<a href="{{ route('admin.categories') }}">Categorías</a>
+				<a href="{{ route('admin.posts') }}">Publicaciones</a>
 			</li>
 			<li class="breadcrumb-item active">
-				Nueva
+				{{ $post->name }}
 			</li>
 		</ol>
 	</div>
@@ -26,7 +26,6 @@
 					@include('admin.partials.menu')
         		</div>
         		<div class="col-sm-8">
-
 					{{-- errors --}}
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger animated shake">
@@ -39,20 +38,20 @@
 					    </div>
 					@endif
 					{{-- /errors --}}
-
 					<form
-						id="formNew"
+						id="formEdit"
 						role="form"
 						method="POST"
-						action="{{ route('admin.categories.save') }}">
+						action="{{ route('admin.posts.update', $post->slug) }}">
+						{{ method_field('PUT') }}
 						{{ csrf_field() }}
 						<div class="panel panel-default admin-register-form">
 
 							<div class="panel-heading">
 								<span class="name">
-									Nueva categoría
+									Editar publicación
 								</span>
-								<a href="{{ route('admin.categories') }}" type="button" class="btn btn-default btn-sm action">
+								<a href="{{ route('admin.posts') }}" type="button" class="btn btn-default btn-sm action">
 									<i class="fas fa-list"></i><span class="hidden-xs">&nbsp;&nbsp;Volver al listado</span>
 								</a>
 							</div> {{-- panel-heading --}}
@@ -60,12 +59,33 @@
 							<div class="panel-body fields">
 								<div class="row">
 									<div class="col-sm-12">
-										<div class="input-group">
-											<div class="form-group">
-												<label for="name">Nombre<span class="required">obligatorio</span></label>
-												<input type="text" class="form-control" id="name" name="name" placeholder="Nombre" value="{{ old('name') }}">
-											</div>
-										</div> {{-- input group --}}
+										<div class="form-group">
+											<label for="category">Categoría<span class="required">obligatorio</span></label>
+											<select name="category" id="category" class="selectpicker form-control" value="{{ old('category_id') }}">
+												@foreach ($categories as $category)
+													@if ($category->id == $post->category_id)
+														<option selected value="{{ $category->id }}">
+															{{ $category->name }}
+														</option>
+													@else
+														<option value="{{ $category->id }}">
+															{{ $category->name }}
+														</option>
+													@endif
+												@endforeach
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label for="title">Título<span class="required">obligatorio</span></label>
+											<input type="text" class="form-control" id="title" name="title" placeholder="Título" value="{{ $post->title }}">
+										</div>
+										<div class="form-group">
+											<label for="detail">Detalle<span class="required">obligatorio</span></label>
+											<textarea name="detail" id="detail" class="form-control" cols="30" rows="10">
+												{{ $post->detail }}
+											</textarea>
+										</div>
 									</div> {{-- col --}}
 								</div> {{-- row --}}
 							</div> {{-- panel-body --}}
@@ -93,6 +113,23 @@
 	        $("#name").focus(function(){
 	        	$(this).select();
 	        });
+
+        	$('#detail').summernote({
+        		height: '150px',
+        		// placeholder: 'Escribe el contenido de la publicación',
+        		dialogsFade: true,
+        		fontNames: ['Arial', 'Arial Black'],
+        		lang: 'es-ES',
+				height: 200,
+	 		    toolbar: [
+		 		    ['style', ['style', 'bold', 'italic', 'underline', 'clear']],
+		 		    ['fontsize', ['color', 'fontsize']],
+		 		    ['para', ['ul', 'ol', 'paragraph']],
+		 		    ['table', ['table']],
+		 		    ['insert', ['hr', 'link', 'picture', 'video']],
+		 		    ['view', ['fullscreen']],
+	 		  	]
+        	});
         });
 
         Mousetrap.bind(['command+s', 'ctrl+s'], function() {

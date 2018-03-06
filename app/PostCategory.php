@@ -17,4 +17,11 @@ class PostCategory extends Model
 	{
 		return $this->hasMany(Post::class, 'category_id', 'id');
 	}
+
+	public function scopeName($query, $name)
+	{
+		if (trim($name) !="") {
+			$query->where("name", "LIKE", "%$name%");
+		}
+	}
 }

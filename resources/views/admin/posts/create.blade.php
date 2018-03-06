@@ -26,59 +26,69 @@
 					@include('admin.partials.menu')
         		</div>
         		<div class="col-sm-8">
-					{{-- Session messages --}}
-{{-- 					@if(session()->has('message'))
-						<div class="alert alert-success alert-auto-hide animated bounce">
-							{{ session()->get('message') }}
-						</div>
-					@endif --}}
-					@if(session()->has('error'))
-						<div class="alert alert-danger alert-auto-hide animated shake">
-							{{ session()->get('error') }}
-						</div>
+
+					{{-- errors --}}
+					@if (count($errors) > 0)
+					    <div class="alert alert-danger animated shake">
+					    	<p>Corrige los siguientes errores:</p>
+					        <ul>
+					            @foreach ($errors->all() as $message)
+					                <li>{{ $message }}</li>
+					            @endforeach
+					        </ul>
+					    </div>
 					@endif
+					{{-- /errors --}}
+
 					<form
-						id="formNewPost"
+						id="formNew"
 						role="form"
 						method="POST"
 						action="{{ route('admin.posts.save') }}">
 						{{ csrf_field() }}
-						<div class="panel panel-default">
+						<div class="panel panel-default admin-register-form">
 
 							<div class="panel-heading">
-								Nueva publicación
+								<span class="name">
+									Nueva publicación
+								</span>
+								<a href="{{ route('admin.posts') }}" type="button" class="btn btn-default btn-sm action">
+									<i class="fas fa-list"></i><span class="hidden-xs">&nbsp;&nbsp;Volver al listado</span>
+								</a>
 							</div> {{-- panel-heading --}}
 
 							<div class="panel-body fields">
 								<div class="row">
 									<div class="col-sm-12">
-										<div class="input-group">
-											<div class="form-group">
-												<label for="category">Categoría<span class="required">obligatorio</span></label>
-												<select name="category" id="category" class="selectpicker form-control">
-													@foreach ($categories as $category)
-														<option value="{{ $category->id }}">
-															{{ $category->name }}
-														</option>
-													@endforeach
-												</select>
-											</div>
-											<div class="form-group">
-												<label for="title">Título<span class="required">obligatorio</span></label>
-												<input type="text" class="form-control" id="title" name="title" placeholder="Título">
-											</div>
-											<div class="form-group">
-												<label for="detail">Detalle<span class="required">obligatorio</span></label>
-												<textarea name="detail" id="detail" class="form-control" cols="30" rows="10"></textarea>
-											</div>
-										</div> {{-- input group --}}
+
+										<div class="form-group">
+											<label for="category">Categoría<span class="required">obligatorio</span></label>
+											<select name="category" id="category" class="selectpicker form-control" value="{{ old('category_id') }}">
+												@foreach ($categories as $category)
+													<option value="{{ $category->id }}">
+														{{ $category->name }}
+													</option>
+												@endforeach
+											</select>
+										</div>
+
+										<div class="form-group">
+											<label for="title">Título<span class="required">obligatorio</span></label>
+											<input type="text" class="form-control" id="title" name="title" placeholder="Título" value="{{ old('title') }}">
+										</div>
+										<div class="form-group">
+											<label for="detail">Detalle<span class="required">obligatorio</span></label>
+											<textarea name="detail" id="detail" class="form-control" cols="30" rows="10">
+												{{ old('detail') }}
+											</textarea>
+										</div>
+
 									</div> {{-- col --}}
 								</div> {{-- row --}}
 							</div> {{-- panel-body --}}
 
 							<div class="panel-footer">
-								<button type="reset" class="btn btn-default" data-dismiss="modal">Reset</button>
-								<button type="submit" class="btn btn-primary">Guardar cambios</button>
+								<button type="submit" class="btn btn-success">Guardar cambios</button>
 							</div> {{-- panel-footer --}}
 
 						</div> {{-- panel --}}
@@ -93,6 +103,14 @@
 @section('js')
     <script>
         $(document).ready(function(){
+        	// put focus on input
+        	$("#title").focus();
+        	$("#title").select();
+
+	        $("#title").focus(function(){
+	        	$(this).select();
+	        });
+
         	$('#detail').summernote({
         		height: '150px',
         		// placeholder: 'Escribe el contenido de la publicación',
@@ -109,6 +127,11 @@
 		 		    ['view', ['fullscreen']],
 	 		  	]
         	});
+        });
+
+        Mousetrap.bind(['command+s', 'ctrl+s'], function() {
+            $("#formNew").submit();
+            return false;
         });
     </script>
 @endsection

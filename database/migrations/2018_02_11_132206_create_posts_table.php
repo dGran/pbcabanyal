@@ -17,7 +17,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->nullable();
             $table->integer('user_id');
-            $table->string('title');
+            $table->string('title')->unique();
             $table->longText('detail');
             $table->boolean('visible')->default(true);
             $table->boolean('author_view')->default(true);

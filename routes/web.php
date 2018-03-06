@@ -33,6 +33,9 @@ Route::get('/admin', 'Admin\AdminController@index')->name('admin');
 Route::get('/admin/publicaciones', 'Admin\PostController@index')->name('admin.posts');
 Route::get('/admin/publicaciones/nueva', 'Admin\PostController@create')->name('admin.posts.create');
 Route::post('/admin/publicaciones/nueva', 'Admin\PostController@save')->name('admin.posts.save');
+Route::get('/admin/publicaciones/{slug}', 'Admin\PostController@edit')->name('admin.posts.edit');
+Route::put('/admin/publicaciones/{slug}', 'Admin\PostController@update')->name('admin.posts.update');
+Route::delete('/admin/publicaciones/eliminar/{slug}', 'Admin\PostController@delete')->name('admin.posts.delete');
 
 // Post Categories
 Route::get('/admin/categorias', 'Admin\PostCategoryController@index')->name('admin.categories');

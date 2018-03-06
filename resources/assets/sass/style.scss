@@ -5,6 +5,12 @@ body {
   /* The html and body elements cannot have any padding or margin. */
 }
 
+a {
+	&:hover {
+		text-decoration: none;
+	}
+}
+
 #wrap {
 	background: $body-bg;
 	min-height: 100%;
@@ -17,7 +23,7 @@ body {
 
 /* Set the fixed height of the footer here */
 #footer {
-  background-color: $brand-danger;
+  background-color: $brand-custom-red;
   color: #ffffff;
   font-size: .9em;
   height: 35px;
@@ -83,9 +89,6 @@ body {
 		color: #ffffff;
 		display: inline-block;
 		padding: .75em 2em .5em 2em;
-		&:hover {
-			text-decoration: none;
-		}
 		.logo {
 			img {
 				width: 60px;
@@ -105,9 +108,9 @@ body {
 }
 
 .main-menu {
-	background: $brand-danger;
-	border-top: 1px solid darken($brand-danger, 10%);
-	border-bottom: 1px solid darken($brand-danger, 10%);
+	background: $brand-custom-red;
+	border-top: 1px solid darken($brand-custom-red, 10%);
+	border-bottom: 1px solid darken($brand-custom-red, 10%);
 	display: none;
 	padding: 0;
 	ul {
@@ -118,13 +121,12 @@ body {
 			display: inline-block;
 			margin-right: -4px;
 			&:hover {
-				background: darken($brand-danger, 10%);
+				background: darken($brand-custom-red, 10%);
 			}
 			a {
 				color: white;
 				display: block;
 				padding: .75em;
-				text-decoration: none;
 			}
 			.current {
 				background: #0f2b56;
@@ -201,9 +203,9 @@ body {
 }
 
 //sumernote custom
-.note-toolbar {
-	z-index: 1;
-}
+// .note-toolbar {
+// 	z-index: 1;
+// }
 .note-editor {
 	// border: 1px solid red;
 	&.note-frame {
@@ -222,16 +224,25 @@ body {
 		background: #f5f5f5;
 		border-bottom: none;
 		padding: 0;
+		form {
+			margin: 0;
+			padding: 0;
+			display: inline;
+		}
 		.title {
 			font-family: 'Francois One';
 			font-size: 1.25em;
 			border-bottom: 1px solid $laravel-border-color;
-			padding: .5rem .5em;
+			padding: 1rem .75em;
 		}
 		.buttons {
-			padding: .5rem;
+			padding: 1rem;
 			button {
 				padding: .25em 1.5em;
+			}
+			.filter-info {
+				font-size: .8em;
+				color: lighten($text-color, 30%);
 			}
 		}
 	}
@@ -240,14 +251,36 @@ body {
 		table {
 			margin: 0;
 			border: none;
+			thead {
+				tr {
+					background: #f5f5f5;
+					td {
+						font-family: 'Francois One';
+					}
+					.title-actions {
+						text-align: right;
+					}
+				}
+			}
 			tr {
 				&:hover {
-					background: #fffcfa;
+					background: #fdf6ee;
 				}
 				td {
 					border-bottom: none;
 					border-top: 1px solid lighten($input-border, 10%);
 					vertical-align: middle;
+				}
+				.indicator {
+					display: none;
+					text-align: right;
+					padding: 0;
+					.indicator-img {
+						display: none;
+					}
+				}
+				.category {
+					font-size: .85em;
 				}
 				.actions {
 					text-align: right;
@@ -359,9 +392,9 @@ body {
 		text-align: right;
 	}
 	.fields {
-		input {
-			z-index: 1;
-		}
+		// input {
+		// 	z-index: 1;
+		// }
 		.required {
 			font-size: .8em;
 			color: lighten($text-color, 30%);
@@ -392,7 +425,6 @@ body {
 	}
 }
 
-
 @media (min-width: 768px) { //tablet or highter
  	body {
  		background: $body-bg;
@@ -418,8 +450,30 @@ body {
 	.admin-register-list {
 		.panel-body {
 			table {
+				thead {
+					tr {
+						.title-actions {
+							padding-right: .75em;
+						}
+					}
+				}
 				tr {
+					&:hover {
+						.indicator {
+							.indicator-img {
+								display: block;
+							}
+						}
+						.actions {
+							opacity: 1;
+						}
+					}
+					.indicator {
+						display: table-cell;
+					}
 					.actions {
+						opacity: .5;
+						width: 150px;
 						ul {
 							li {
 								border-bottom: none;

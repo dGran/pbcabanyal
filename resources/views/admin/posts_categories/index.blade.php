@@ -37,41 +37,33 @@
 							<div class="title">
 								Categorías
 							</div>
-							<div class="buttons clearfix">
-								<div class="pull-left">
-									<form class="form-inline">
-  										<div class="form-group">
-							 			    <div class="input-group">
-												<div class="input-group-addon"><i class="fas fa-filter"></i></div>
-												<input type="text" class="form-control" placeholder="Buscar...">
-										    </div>
-								 		</div>
-								 	</form>
-
-								</div>
-								<div class="pull-right">
-									<a id="btnAdd" href="{{ route('admin.categories.create') }}" type="button" class="btn btn-success btn-sm">
-										<i class="fa fa-plus"></i><span class="hidden-xs">&nbsp;&nbsp;Nueva categoría</span>
-									</a>
-								</div>
+							<div class="buttons">
+				 			    <div class="input-group">
+									<div class="input-group-addon"><i class="fas fa-filter"></i></div>
+									<form id="formSearch" role="search" method="get" action="{{ route('admin.categories') }}">
+										<input id="filter" type="text" name="name" class="form-control" placeholder="Buscar..." value="{{ $name }}">
+									</form>
+									<div class="input-group-addon">
+										<a id="btnAdd" href="{{ route('admin.categories.create') }}" type="button">
+											<i class="fa fa-plus"></i><span class="hidden-xs">&nbsp;&nbsp;Nueva categoría</span>
+										</a>
+									</div>
+							    </div>
+							    @if ($name)
+							    	<span class="filter-info">Filtro aplicado: '{{ $name }}'</span>
+							    @endif
 							</div>
 						</div>
 
 						<div class="panel-body">
 							<table class="table table-hover table-responsive">
-								<thead>
-									<tr>
-										<td>#</td>
-										<td>Nombre</td>
-										<td></td>
-									</tr>
-								</thead>
 								@if ($categories->count() > 0)
 									@foreach ($categories as $category)
 									<tr>
-
-										<td width="32" align="right">
-											<small>#{{ $category->id }}</small>
+										<td width="16" class="indicator">
+											<div class="indicator-img">
+												<i class="fas fa-caret-right"></i>
+											</div>
 										</td>
 
 										<td>
@@ -103,18 +95,20 @@
   							</table>
 						</div> {{-- panel-body --}}
 
-						<div class="panel-footer">
-							<table>
-								<tr>
-									<td class="reg-info">
-										Registros: {{ $categories->firstItem() }}-{{ $categories->lastItem() }} de {{ $categories->total() }}
-									</td>
-									<td class="navigation">
-										{{ $categories->links() }}
-									</td>
-								</tr>
-							</table>
-						</div> {{-- panel-footer --}}
+						@if ($categories->count() > 0)
+							<div class="panel-footer">
+								<table>
+									<tr>
+										<td class="reg-info">
+											Registros: {{ $categories->firstItem() }}-{{ $categories->lastItem() }} de {{ $categories->total() }}
+										</td>
+										<td class="navigation">
+											{{ $categories->links() }}
+										</td>
+									</tr>
+								</table>
+							</div> {{-- panel-footer --}}
+						@endif
 
 					</div> {{-- admin-register --}}
 
@@ -138,6 +132,7 @@
 				showCancelButton: true,
 				confirmButtonText: "Sí",
 				cancelButtonText: "No",
+				confirmButtonColor: "#e45c5c",
 				closeOnConfirm: true
 			},
 			function(isConfirmed) {
@@ -146,11 +141,23 @@
 				}
 			});
 		}
+        $(document).ready(function(){
 
-        Mousetrap.bind(['command+a', 'ctrl+a'], function() {
-        	var url = $("#btnAdd").attr('href');
-        	$(location).attr('href', url);
-            return false;
+	        Mousetrap.bind(['command+a', 'ctrl+a'], function() {
+	        	var url = $("#btnAdd").attr('href');
+	        	$(location).attr('href', url);
+	            return false;
+	        });
+
+	        Mousetrap.bind(['command+f', 'ctrl+f'], function() {
+	        	$('#filter').focus();
+	            return false;
+	        });
+
+	        $("#filter").focus(function(){
+	        	$(this).select();
+	        });
+
         });
 	</script>
 @endsection

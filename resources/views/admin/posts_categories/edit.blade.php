@@ -51,7 +51,7 @@
 								<span class="name">
 									Editar categoría
 								</span>
-								<a id="btnAdd" href="{{ route('admin.categories') }}" type="button" class="btn btn-default btn-sm action">
+								<a href="{{ route('admin.categories') }}" type="button" class="btn btn-default btn-sm action">
 									<i class="fas fa-list"></i><span class="hidden-xs">&nbsp;&nbsp;Volver al listado</span>
 								</a>
 							</div> {{-- panel-heading --}}
@@ -88,6 +88,11 @@
         $(document).ready(function(){
         	// put focus on input
         	$("#name").focus();
+        	$("#name").select();
+
+	        $("#name").focus(function(){
+	        	$(this).select();
+	        });
         });
 
         Mousetrap.bind(['command+s', 'ctrl+s'], function() {

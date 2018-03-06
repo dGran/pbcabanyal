@@ -8,10 +8,11 @@ use App\PostCategory;
 
 class PostCategoryController extends Controller
 {
-	public function index()
+	public function index(Request $request)
 	{
-		$categories = PostCategory::orderBy('name', 'asc')->paginate(10);
-		return view('admin.posts_categories.index', compact('categories'));
+		$categories = PostCategory::name($request->get('name'))->orderBy('name', 'ASC')->paginate(10);
+		$name = $request->get('name');
+		return view('admin.posts_categories.index', compact('categories', 'name'));
 	}
 
 	public function create()
@@ -40,16 +41,6 @@ class PostCategoryController extends Controller
 		return redirect()->route('admin.categories')->with('message', 'Se ha agregado una nueva categoría: "' . $request->name . '"');
 	}
 
-	public function delete($slug)
-	{
-		$category = PostCategory::where('slug','=', $slug)->firstOrFail();
-		$name = $category->name;
-
-		$category->delete();
-
-		return redirect()->route('admin.categories')->with('message', 'Se ha eliminado la categoría: "' . $name . '"' );
-	}
-
 	public function edit($slug)
 	{
 		$category = PostCategory::where('slug','=', $slug)->firstOrFail();
@@ -74,6 +65,16 @@ class PostCategoryController extends Controller
 		$category->save();
 
 		return redirect()->route('admin.categories')->with('message', 'Se ha modificado correctamente la categoría: "' . $request->name . '"');
+	}
+
+	public function delete($slug)
+	{
+		$category = PostCategory::where('slug','=', $slug)->firstOrFail();
+		$name = $category->name;
+
+		$category->delete();
+
+		return redirect()->route('admin.categories')->with('message', 'Se ha eliminado la categoría: "' . $name . '"' );
 	}
 
 }

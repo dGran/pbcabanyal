@@ -31,56 +31,169 @@
 						</div>
 					@endif
 
-					<div class="panel panel-default admin-register">
+					<div class="panel panel-default admin-register-list">
+
 						<div class="panel-heading">
-							<span class="name">
+							<div class="title">
 								Publicaciones
-							</span>
-							<a href="{{ route('admin.posts.create') }}" type="button" class="btn btn-success btn-sm action">
-								<i class="fa fa-plus" aria-hidden="true"></i>
-							</a>
+							</div>
+							<div class="buttons">
+				 			    <div class="input-group">
+									<div class="input-group-addon"><i class="fas fa-filter"></i></div>
+									<form id="formSearch" role="search" method="get" action="{{ route('admin.posts') }}">
+										<input id="filter" type="text" name="title" class="form-control" placeholder="Buscar..." value="{{ $title }}">
+									</form>
+									<div class="input-group-addon">
+										<a id="btnAdd" href="{{ route('admin.posts.create') }}" type="button">
+											<i class="fa fa-plus"></i><span class="hidden-xs">&nbsp;&nbsp;Nueva publicación</span>
+										</a>
+									</div>
+							    </div>
+							    @if ($title)
+							    	<span class="filter-info">Filtro aplicado: '{{ $title }}'</span>
+							    @endif
+							</div>
 						</div>
+
 						<div class="panel-body">
-							<table class="table table-responsive">
+							<table class="table table-hover table-responsive">
 								@if ($posts->count() > 0)
+									<thead>
+										<tr>
+											<td class="hidden-xs"></td>
+											<td>Categoría</td>
+											<td>Título</td>
+											<td class="title-actions">Acciones</td>
+										</tr>
+									</thead>
 									@foreach ($posts as $post)
 									<tr>
-										<td>{{ $post->id }}</td>
-										<td>{{ $post->title }}</td>
-										<td width="24">
-											<a href="" title="Publicar en facebook">
-												<i class="fab fa-facebook"></i>
-											</a>
+										<td width="16" class="indicator">
+											<div class="indicator-img">
+												<i class="fas fa-caret-right"></i>
+											</div>
 										</td>
-										<td width="24">
-											<a href="" title="Publicar en twitter">
-												<i class="fab fa-twitter"></i>
-											</a>
+
+										<td class="category">
+											{{ $post->category->name }}
 										</td>
-										<td width="24">
-											<a href="" title="Editar publicación">
-												<i class="fas fa-edit"></i>
-											</a>
+
+										<td>
+											{{ $post->title }}
 										</td>
-										<td width="24">
-											<a href="" title="Eliminar publicación">
-												<i class="fas fa-trash"></i>
-											</a>
+
+										<td class="hidden-xs actions">
+											<ul>
+												@include('admin.posts.list_actions')
+											</ul>
 										</td>
+										<td width="24" class="visible-xs actions dropdown">
+						                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						                        <i class="fas fa-ellipsis-v dropdown-toggle"></i>
+						                    </a>
+
+						                    <ul class="dropdown-menu pull-right animated slideInRight" role="menu">
+						                        @include('admin.posts.list_actions')
+						                    </ul>
+										</td>
+
+										<!-- Publication Modal View -->
+										<div class="modal fade" id="reg{{ $post->id }}" tabindex="-1" role="dialog">
+											<div class="modal-dialog" role="document">
+												<div class="modal-content">
+													<div class="modal-header">
+														<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+														<h4 class="modal-title" id="myModalLabel">{{ $post->title }}</h4>
+													</div>
+													<div class="modal-body">
+														{!! $post->detail !!}
+													</div>
+												</div>
+											</div>
+										</div>
+
 									</tr>
 									@endforeach
 								@else
-									<tr>
-										<td>No existen publicaciones</td>
+									<tr class="empty">
+										<td>Lista vacía...</td>
 									</tr>
 								@endif
   							</table>
-						</div>
-					</div>
+						</div> {{-- panel-body --}}
+
+						@if ($posts->count() > 0)
+							<div class="panel-footer">
+								<table>
+									<tr>
+										<td class="reg-info">
+											Registros: {{ $posts->firstItem() }}-{{ $posts->lastItem() }} de {{ $posts->total() }}
+										</td>
+										<td class="navigation">
+											{{ $posts->links() }}
+										</td>
+									</tr>
+								</table>
+							</div> {{-- panel-footer --}}
+						@endif
+
+					</div> {{-- admin-register --}}
+
         		</div>
         	</div>
 
         </div>
 	</div>
 
+@endsection
+
+@section('js')
+	<script>
+		function confirmDelete(e, id, title) {
+			e.preventDefault();
+
+			swal({
+				title: "¿Estás seguro?",
+				text: 'Se va a eliminar la publicación "' + title + '". No se podrán deshacer los cambios!',
+				// type: "warning",
+				showCancelButton: true,
+				confirmButtonText: "Sí",
+				cancelButtonText: "No",
+				confirmButtonColor: "#e45c5c",
+				closeOnConfirm: true,
+			},
+			function(isConfirmed) {
+				if (isConfirmed) {
+					$("#formDelete"+id).submit();
+				}
+			});
+		}
+
+	    function view(e, title, detail) {
+	    	e.preventDefault();
+			swal({
+				title: title,
+				text: detail,
+			});
+	    }
+
+        $(document).ready(function(){
+
+	        Mousetrap.bind(['command+a', 'ctrl+a'], function() {
+	        	var url = $("#btnAdd").attr('href');
+	        	$(location).attr('href', url);
+	            return false;
+	        });
+
+	        Mousetrap.bind(['command+f', 'ctrl+f'], function() {
+	        	$('#filter').focus();
+	            return false;
+	        });
+
+	        $("#filter").focus(function(){
+	        	$(this).select();
+	        });
+
+        });
+	</script>
 @endsection
