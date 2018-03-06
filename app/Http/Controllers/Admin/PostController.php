@@ -85,4 +85,14 @@ class PostController extends Controller
 
 		return redirect()->route('admin.posts')->with('message', 'Se ha modificado correctamente la publicación: "' . $request->title . '"');
 	}
+
+	public function delete($slug)
+	{
+		$post = Post::where('slug','=', $slug)->firstOrFail();
+		$title = $post->title;
+
+		$post->delete();
+
+		return redirect()->route('admin.posts')->with('message', 'Se ha eliminado la publicación: "' . $title . '"' );
+	}
 }

@@ -8675,53 +8675,53 @@ a:hover {
   text-align: right;
 }
 
-.admin-register-list .panel-body table tr:hover {
+.admin-register-list .panel-body table tbody tr:hover {
   background: #fdf6ee;
 }
 
-.admin-register-list .panel-body table tr td {
+.admin-register-list .panel-body table tbody tr td {
   border-bottom: none;
   border-top: 1px solid #e7e9ea;
   vertical-align: middle;
 }
 
-.admin-register-list .panel-body table tr .indicator {
+.admin-register-list .panel-body table tbody tr .indicator {
   display: none;
   text-align: right;
   padding: 0;
 }
 
-.admin-register-list .panel-body table tr .indicator .indicator-img {
+.admin-register-list .panel-body table tbody tr .indicator .indicator-img {
   display: none;
 }
 
-.admin-register-list .panel-body table tr .category {
+.admin-register-list .panel-body table tbody tr .category {
   font-size: .85em;
 }
 
-.admin-register-list .panel-body table tr .actions {
+.admin-register-list .panel-body table tbody tr .actions {
   text-align: right;
 }
 
-.admin-register-list .panel-body table tr .actions ul {
+.admin-register-list .panel-body table tbody tr .actions ul {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.admin-register-list .panel-body table tr .actions ul li {
+.admin-register-list .panel-body table tbody tr .actions ul li {
   border-bottom: 1px solid #d3e0e9;
   display: block;
   margin: 0;
 }
 
-.admin-register-list .panel-body table tr .actions ul li:hover {
+.admin-register-list .panel-body table tbody tr .actions ul li:hover {
   background: #f5f5f5;
 }
 
-.admin-register-list .panel-body table tr .actions ul li a,
-.admin-register-list .panel-body table tr .actions ul li button,
-.admin-register-list .panel-body table tr .actions ul li .publications {
+.admin-register-list .panel-body table tbody tr .actions ul li a,
+.admin-register-list .panel-body table tbody tr .actions ul li button,
+.admin-register-list .panel-body table tbody tr .actions ul li .publications {
   background: none;
   border: none;
   color: slategrey;
@@ -8731,45 +8731,45 @@ a:hover {
   width: 100%;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .delete {
+.admin-register-list .panel-body table tbody tr .actions ul li .delete {
   color: #e45c5c;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .delete:hover {
+.admin-register-list .panel-body table tbody tr .actions ul li .delete:hover {
   color: #dd3030;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .delete.disabled {
+.admin-register-list .panel-body table tbody tr .actions ul li .delete.disabled {
   color: #f2b4b4;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .delete.disabled:hover {
+.admin-register-list .panel-body table tbody tr .actions ul li .delete.disabled:hover {
   color: #f2b4b4;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .disabled {
+.admin-register-list .panel-body table tbody tr .actions ul li .disabled {
   color: #a9b3bd;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .disabled:hover {
+.admin-register-list .panel-body table tbody tr .actions ul li .disabled:hover {
   color: #a9b3bd;
 }
 
-.admin-register-list .panel-body table tr .actions ul li .publications {
+.admin-register-list .panel-body table tbody tr .actions ul li .publications {
   color: #b1b7ba;
   font-size: .9em;
   padding: .5em;
 }
 
-.admin-register-list .panel-body table tr .actions .dropdown-toggle {
+.admin-register-list .panel-body table tbody tr .actions .dropdown-toggle {
   margin-right: .5em;
 }
 
-.admin-register-list .panel-body table .empty:hover {
+.admin-register-list .panel-body table tbody .empty:hover {
   background: none;
 }
 
-.admin-register-list .panel-body table .empty td {
+.admin-register-list .panel-body table tbody .empty td {
   color: #b1b7ba;
   padding: 1.5em 0;
   text-align: center;
@@ -8884,42 +8884,42 @@ a:hover {
     padding-right: .75em;
   }
 
-  .admin-register-list .panel-body table tr:hover .indicator .indicator-img {
+  .admin-register-list .panel-body table tbody tr:hover .indicator .indicator-img {
     display: block;
   }
 
-  .admin-register-list .panel-body table tr:hover .actions {
+  .admin-register-list .panel-body table tbody tr:hover .actions {
     opacity: 1;
   }
 
-  .admin-register-list .panel-body table tr .indicator {
+  .admin-register-list .panel-body table tbody tr .indicator {
     display: table-cell;
   }
 
-  .admin-register-list .panel-body table tr .actions {
+  .admin-register-list .panel-body table tbody tr .actions {
     opacity: .5;
     width: 150px;
   }
 
-  .admin-register-list .panel-body table tr .actions ul li {
+  .admin-register-list .panel-body table tbody tr .actions ul li {
     border-bottom: none;
     display: inline-block;
   }
 
-  .admin-register-list .panel-body table tr .actions ul li:hover {
+  .admin-register-list .panel-body table tbody tr .actions ul li:hover {
     background: none;
   }
 
-  .admin-register-list .panel-body table tr .actions ul li a,
-  .admin-register-list .panel-body table tr .actions ul li button {
+  .admin-register-list .panel-body table tbody tr .actions ul li a,
+  .admin-register-list .panel-body table tbody tr .actions ul li button {
     padding: 0 .25em;
   }
 
-  .admin-register-list .panel-body table tr .actions ul li a:hover {
+  .admin-register-list .panel-body table tbody tr .actions ul li a:hover {
     color: #5a6773;
   }
 
-  .admin-register-list .panel-body table tr .actions ul li .publications {
+  .admin-register-list .panel-body table tbody tr .actions ul li .publications {
     margin-right: 1em;
     font-size: .8em;
     padding: 0;

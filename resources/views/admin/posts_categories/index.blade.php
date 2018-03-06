@@ -57,6 +57,7 @@
 
 						<div class="panel-body">
 							<table class="table table-hover table-responsive">
+								<tbody>
 								@if ($categories->count() > 0)
 									@foreach ($categories as $category)
 									<tr>
@@ -92,6 +93,7 @@
 										<td>Lista vacía...</td>
 									</tr>
 								@endif
+								</tbody>
   							</table>
 						</div> {{-- panel-body --}}
 

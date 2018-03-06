@@ -47,7 +47,7 @@
 		{{ csrf_field() }}
 		{{ method_field('delete') }}
 
-		<button class="delete" onclick="confirmDelete(event, '{{ $post->id }}', '{{ $post->name }}' )">
+		<button class="delete" onclick="confirmDelete(event, '{{ $post->id }}', '{{ $post->title }}' )">
 			<div class="hidden-xs">
 				<i class="fas fa-trash"></i>
 			</div>

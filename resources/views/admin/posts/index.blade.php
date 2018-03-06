@@ -66,6 +66,7 @@
 											<td class="title-actions">Acciones</td>
 										</tr>
 									</thead>
+									<tbody>
 									@foreach ($posts as $post)
 									<tr>
 										<td width="16" class="indicator">
@@ -119,6 +120,7 @@
 										<td>Lista vacía...</td>
 									</tr>
 								@endif
+								</tbody>
   							</table>
 						</div> {{-- panel-body --}}
 
