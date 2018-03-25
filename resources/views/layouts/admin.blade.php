@@ -20,12 +20,8 @@
 </head>
 <body>
     <div id="wrap">
-        <div class="top-menu">
-            @include('layouts.partials.top-menu')
-        </div>
-
-        <nav class="title-menu">
-            @include('layouts.partials.title-menu')
+        <nav class="title-menu admin">
+            @include('layouts.partials.admin-title-menu')
         </nav>
 
         <div class="main-menu">
@@ -58,6 +54,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.1/mousetrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.min.js"></script>
+    <script src="{{ asset('js/admin.js') }}"></script>
 
     @yield('js')
 

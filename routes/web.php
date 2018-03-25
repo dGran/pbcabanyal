@@ -37,10 +37,14 @@ Route::get('/admin/publicaciones/{slug}', 'Admin\PostController@edit')->name('ad
 Route::put('/admin/publicaciones/{slug}', 'Admin\PostController@update')->name('admin.posts.update');
 Route::delete('/admin/publicaciones/eliminar/{slug}', 'Admin\PostController@delete')->name('admin.posts.delete');
 
-// Post Categories
+// Admin Posts Categories
 Route::get('/admin/categorias', 'Admin\PostCategoryController@index')->name('admin.categories');
 Route::get('/admin/categorias/nueva', 'Admin\PostCategoryController@create')->name('admin.categories.create');
 Route::post('/admin/categorias/nueva', 'Admin\PostCategoryController@save')->name('admin.categories.save');
 Route::get('/admin/categorias/{slug}', 'Admin\PostCategoryController@edit')->name('admin.categories.edit');
 Route::put('/admin/categorias/{slug}', 'Admin\PostCategoryController@update')->name('admin.categories.update');
 Route::delete('/admin/categorias/eliminar/{slug}', 'Admin\PostCategoryController@delete')->name('admin.categories.delete');
+
+// Admin Posts Categories
+Route::get('/admin/banners', 'Admin\BannerController@index')->name('admin.banners');
+Route::post('/admin/banners/{id}', 'Admin\BannerController@update')->name('admin.banners.update');

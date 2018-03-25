@@ -8485,12 +8485,17 @@ a:hover {
 }
 
 .title-menu {
-  background: #e45c5c;
+  background: #9c1837;
   font-size: 1em;
   font-weight: bold;
   height: auto;
   padding: 0;
   text-align: center;
+}
+
+.title-menu.admin {
+  background: #9c1837;
+  font-size: 1em;
 }
 
 .title-menu a {
@@ -8541,8 +8546,8 @@ a:hover {
   padding: .75em;
 }
 
-.main-menu ul li .current {
-  background: #0f2b56;
+.main-menu ul .current {
+  background: #701127;
 }
 
 .breadcrumbpb {
@@ -8622,6 +8627,10 @@ a:hover {
   border: 1px solid #d3e0e9;
 }
 
+.left-menu {
+  display: none;
+}
+
 .admin-register-list .panel-heading {
   background: #f5f5f5;
   border-bottom: none;
@@ -8635,13 +8644,22 @@ a:hover {
 }
 
 .admin-register-list .panel-heading .title {
-  font-family: 'Francois One';
-  font-size: 1.25em;
-  border-bottom: 1px solid #d3e0e9;
   padding: 1rem .75em;
 }
 
+.admin-register-list .panel-heading .title .name {
+  float: left;
+  font-family: 'Francois One';
+  font-size: 1.25em;
+}
+
+.admin-register-list .panel-heading .title .action {
+  float: right;
+  padding: .25em .75em;
+}
+
 .admin-register-list .panel-heading .buttons {
+  border-top: 1px solid #d3e0e9;
   padding: 1rem;
 }
 
@@ -8697,6 +8715,10 @@ a:hover {
 
 .admin-register-list .panel-body table tbody tr .category {
   font-size: .85em;
+}
+
+.admin-register-list .panel-body table tbody tr .category .nothing {
+  color: #969ea2;
 }
 
 .admin-register-list .panel-body table tbody tr .actions {
@@ -8762,7 +8784,11 @@ a:hover {
 }
 
 .admin-register-list .panel-body table tbody tr .actions .dropdown-toggle {
-  margin-right: .5em;
+  margin-right: .25em;
+}
+
+.admin-register-list .panel-body table tbody tr .actions .dropdown-menu li {
+  padding: .25em;
 }
 
 .admin-register-list .panel-body table tbody .empty:hover {
@@ -8800,6 +8826,32 @@ a:hover {
   padding: .75em 0em .25em 1em;
 }
 
+.admin-register-list.banners .panel-heading {
+  border-bottom: 1px solid #d3e0e9;
+}
+
+.admin-register-list.banners .panel-heading .title .name {
+  float: none;
+}
+
+.admin-register-list.banners .panel-body ul {
+  padding: 0;
+}
+
+.admin-register-list.banners .panel-body ul .banner {
+  border-bottom: 1px solid #d3e0e9;
+  list-style: none;
+  padding: 1em 1em 0 1em;
+}
+
+.admin-register-list.banners .panel-body ul .banner:last-child {
+  border-bottom: none;
+}
+
+.admin-register-list.banners .panel-body ul .banner .banner-penya {
+  margin-bottom: 1em;
+}
+
 .admin-register-form .panel-heading {
   background: #f5f5f5;
   overflow: hidden;
@@ -8813,7 +8865,7 @@ a:hover {
 
 .admin-register-form .panel-heading .action {
   float: right;
-  padding: .25em 1.5em;
+  padding: .25em .75em;
 }
 
 .admin-register-form .panel-body {
@@ -8867,16 +8919,21 @@ a:hover {
     border-bottom: none;
   }
 
+  .title-menu.admin .brand {
+    font-size: 1.5em;
+    padding: .25em 0;
+  }
+
   .title-menu a {
     display: block;
     padding: .5em 0;
   }
 
-  .title-menu a .brand {
-    font-size: 1.5em;
+  .main-menu {
+    display: block;
   }
 
-  .main-menu {
+  .left-menu {
     display: block;
   }
 

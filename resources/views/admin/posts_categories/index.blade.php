@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 
 @section('breadcrumb')
 	<div class="breadcrumbpb">
@@ -19,10 +19,10 @@
     <div class="container">
         <div class="margin10">
         	<div class="row">
-        		<div class="col-sm-4">
+        		<div class="col-sm-4 left-menu">
 					@include('admin.partials.menu')
         		</div>
-        		<div class="col-sm-8">
+        		<div class="col-sm-8 table-content">
 
 					{{-- Session messages --}}
 					@if(session()->has('message'))
@@ -34,8 +34,12 @@
 					<div class="panel panel-default admin-register-list">
 
 						<div class="panel-heading">
-							<div class="title">
-								Categorías
+							<div class="title clearfix">
+								<span class="name">Categorías</span>
+								<a class="action btn btn-default" id="btn-show-hide-left-menu">
+									<i class="expand-icon fas fa-expand-arrows-alt hidden-xs"></i>
+									<i class="expand-icon fas fa-arrows-alt visible-xs"></i>
+								</a>
 							</div>
 							<div class="buttons">
 				 			    <div class="input-group">
