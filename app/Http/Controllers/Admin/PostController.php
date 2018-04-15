@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Post;
-use App\PostCategory;
+use App\Http\Models\Post;
+use App\Http\Models\PostCategory;
 
 class PostController extends Controller
 {
@@ -45,9 +45,23 @@ class PostController extends Controller
 		if ($request->category > 0) {
 			$post->category_id = $request->category;
 		}
-		$post->visible = 1;
-		$post->author_view = 1;
+		if ($request->visible == "on") {
+			$post->visible = 1;
+		} else {
+			$post->visible = 0;
+		}
+		if ($request->author_view == "on") {
+			$post->author_view = 1;
+		} else {
+			$post->author_view = 0;
+		}
 		$post->save();
+
+		$user = auth()->user()->id;
+		$table = "Publicaciones";
+		$description = $post->title;
+		$action = 'POST';
+		save_admin_log($user, $table, $description, $action);
 
 		return redirect()->route('admin.posts')->with('message', 'Se ha agregado una nueva publicación: "' . $request->title . '"');
 	}
@@ -81,7 +95,24 @@ class PostController extends Controller
 		if ($request->category > 0) {
 			$post->category_id = $request->category;
 		}
+		if ($request->visible == "on") {
+			$post->visible = 1;
+		} else {
+			$post->visible = 0;
+		}
+		if ($request->author_view == "on") {
+			$post->author_view = 1;
+		} else {
+			$post->author_view = 0;
+		}
 		$post->save();
+
+
+		$user = auth()->user()->id;
+		$table = "Publicaciones";
+		$description = $post->title;
+		$action = 'UPDATE';
+		save_admin_log($user, $table, $description, $action);
 
 		return redirect()->route('admin.posts')->with('message', 'Se ha modificado correctamente la publicación: "' . $request->title . '"');
 	}
@@ -90,6 +121,12 @@ class PostController extends Controller
 	{
 		$post = Post::where('slug','=', $slug)->firstOrFail();
 		$title = $post->title;
+
+		$user = auth()->user()->id;
+		$table = "Publicaciones";
+		$description = $post->title;
+		$action = 'DELETE';
+		save_admin_log($user, $table, $description, $action);
 
 		$post->delete();
 

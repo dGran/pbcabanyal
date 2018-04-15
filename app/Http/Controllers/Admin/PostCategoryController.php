@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\PostCategory;
+use App\Http\Models\PostCategory;
 
 class PostCategoryController extends Controller
 {
@@ -38,6 +38,12 @@ class PostCategoryController extends Controller
 		$category->slug = str_slug($request->name, "-");
 		$category->save();
 
+		$user = auth()->user()->id;
+		$table = "Categorías";
+		$description = $category->name;
+		$action = 'POST';
+		save_admin_log($user, $table, $description, $action);
+
 		return redirect()->route('admin.categories')->with('message', 'Se ha agregado una nueva categoría: "' . $request->name . '"');
 	}
 
@@ -64,6 +70,12 @@ class PostCategoryController extends Controller
 		$category->slug = str_slug($request->name, "-");
 		$category->save();
 
+		$user = auth()->user()->id;
+		$table = "Categorías";
+		$description = $category->name;
+		$action = 'UPDATE';
+		save_admin_log($user, $table, $description, $action);
+
 		return redirect()->route('admin.categories')->with('message', 'Se ha modificado correctamente la categoría: "' . $request->name . '"');
 	}
 
@@ -71,6 +83,12 @@ class PostCategoryController extends Controller
 	{
 		$category = PostCategory::where('slug','=', $slug)->firstOrFail();
 		$name = $category->name;
+
+		$user = auth()->user()->id;
+		$table = "Categorías";
+		$description = $category->name;
+		$action = 'DELETE';
+		save_admin_log($user, $table, $description, $action);
 
 		$category->delete();
 

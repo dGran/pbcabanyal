@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Banner;
+use App\Http\Models\Banner;
 
 class BannerController extends Controller
 {
@@ -32,6 +32,12 @@ class BannerController extends Controller
 		$banner->detail = $request->detail;
 		$banner->color = $request->color;
 		$banner->save();
+
+		$user = auth()->user()->id;
+		$table = "Banners portada";
+		$description = $banner->title;
+		$action = 'UPDATE';
+		save_admin_log($user, $table, $description, $action);
 
 		return redirect()->route('admin.banners')->with('message', 'Se ha modificado correctamente el banner: "' . $request->title . '"');
 	}

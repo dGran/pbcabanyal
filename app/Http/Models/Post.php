@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Http\Models;
 
 use App\Traits\DatesTranslator;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use App\User;
 
 
 class Post extends Model
@@ -18,6 +19,11 @@ class Post extends Model
 	public function category()
 	{
 		return $this->hasOne(PostCategory::class, 'id', 'category_id');
+	}
+
+	public function author()
+	{
+		return $this->hasOne(User::class, 'id', 'user_id');
 	}
 
 	public function scopeTitle($query, $title)

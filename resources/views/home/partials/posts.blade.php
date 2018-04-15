@@ -14,6 +14,9 @@
                     {{-- {{ $post->created_at->format('l d, F Y') }} --}}
                     <span class="date">
                         {{ $post->created_at->diffForHumans() }}
+                        @if ($post->author_view)
+                            <br>por {{ $post->author->name }}
+                        @endif
                     </span>
                 </small>
             </div>

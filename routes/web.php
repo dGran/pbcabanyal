@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Models\PostCategory;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,6 +16,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+$pages = PostCategory::get();
+foreach ($pages as $page) {
+	Route::get('/page/{id}', 'HomeController@page')->name('page');
+}
 
 Auth::routes();
 
@@ -45,6 +53,14 @@ Route::get('/admin/categorias/{slug}', 'Admin\PostCategoryController@edit')->nam
 Route::put('/admin/categorias/{slug}', 'Admin\PostCategoryController@update')->name('admin.categories.update');
 Route::delete('/admin/categorias/eliminar/{slug}', 'Admin\PostCategoryController@delete')->name('admin.categories.delete');
 
-// Admin Posts Categories
+// Admin Banners
 Route::get('/admin/banners', 'Admin\BannerController@index')->name('admin.banners');
 Route::post('/admin/banners/{id}', 'Admin\BannerController@update')->name('admin.banners.update');
+
+// Admin Global Ads
+Route::get('/admin/anuncios', 'Admin\GlobalAdController@index')->name('admin.ads');
+Route::get('/admin/anuncios/nuevo', 'Admin\GlobalAdController@create')->name('admin.ads.create');
+Route::post('/admin/anuncios/nuevo', 'Admin\GlobalAdController@save')->name('admin.ads.save');
+Route::get('/admin/anuncios/{id}', 'Admin\GlobalAdController@edit')->name('admin.ads.edit');
+Route::put('/admin/anuncios/{id}', 'Admin\GlobalAdController@update')->name('admin.ads.update');
+Route::delete('/admin/anuncios/eliminar/{id}', 'Admin\GlobalAdController@delete')->name('admin.ads.delete');

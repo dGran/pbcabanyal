@@ -1,52 +1,77 @@
-<ul class="list-group">
-	<li class="list-group-item">
-		@if (Route::currentRouteName() == 'admin.categories' || Route::currentRouteName() == 'admin.categories.create' || Route::currentRouteName() == 'admin.categories.edit')
-			<span>
-				<strong>
-					<i class="fas fa-angle-double-right"></i>
-					Categorías
-				</strong>
-			</span>
-		@else
-			<a href="{{ route('admin.categories') }}">Categorías</a>
+<ul class="list-group admin-menu">
+	@if (Route::currentRouteName() == 'admin.categories' || Route::currentRouteName() == 'admin.categories.create' || Route::currentRouteName() == 'admin.categories.edit')
+		<li class="list-group-item current">
+			<i class="fas fa-angle-double-right"></i>
+			Categorías
+	@else
+		<li class="list-group-item">
+			<a href="{{ route('admin.categories') }}">
+				<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+				Categorías
+			</a>
 		@endif
 	</li>
-	<li class="list-group-item">
-		@if (Route::currentRouteName() == 'admin.posts' || Route::currentRouteName() == 'admin.posts.create' || Route::currentRouteName() == 'admin.posts.edit')
-			<span>
-				<strong>
-					<i class="fas fa-angle-double-right"></i>
-					Publicaciones
-				</strong>
-			</span>
-		@else
-			<a href="{{ route('admin.posts') }}">Publicaciones</a>
+
+	@if (Route::currentRouteName() == 'admin.posts' || Route::currentRouteName() == 'admin.posts.create' || Route::currentRouteName() == 'admin.posts.edit')
+		<li class="list-group-item current">
+			<i class="fas fa-angle-double-right"></i>
+			Publicaciones
+	@else
+		<li class="list-group-item">
+			<a href="{{ route('admin.posts') }}">
+				<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+				Publicaciones
+			</a>
 		@endif
 	</li>
-</ul>
 
-<ul class="list-group">
-	<li class="list-group-item"><a href="">Eventos</a></li>
-	<li class="list-group-item"><a href="">Galerías</a></li>
-	<li class="list-group-item"><a href="">Encuestas</a></li>
-</ul>
-
-<ul class="list-group">
 	<li class="list-group-item">
-		@if (Route::currentRouteName() == 'admin.banners')
-			<span>
-				<strong>
-					<i class="fas fa-angle-double-right"></i>
-					Banners portada
-				</strong>
-			</span>
-		@else
-			<a href="{{ route('admin.banners') }}">Banners portada</a>
-		@endif
+		<a href="">
+			<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+			Eventos
+		</a>
 	</li>
-	<li class="list-group-item"><a href="">Anuncios generales</a></li>
-</ul>
+	<li class="list-group-item">
+		<a href="">
+			<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+			Galerías
+		</a>
+	</li>
+	<li class="list-group-item">
+		<a href="">
+			<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+			Encuestas
+		</a>
+	</li>
 
-<ul class="list-group">
-	<li class="list-group-item"><a href="">Usuarios</a></li>
+	@if (Route::currentRouteName() == 'admin.banners')
+		<li class="list-group-item current">
+			<i class="fas fa-angle-double-right"></i>
+			Banners portada
+	@else
+		<li class="list-group-item">
+			<a href="{{ route('admin.banners') }}">
+				<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+				Banners portada
+			</a>
+	@endif
+	</li>
+
+	@if (Route::currentRouteName() == 'admin.ads' || Route::currentRouteName() == 'admin.ads.create' || Route::currentRouteName() == 'admin.ads.edit')
+		<li class="list-group-item current">
+			<i class="fas fa-angle-double-right"></i>
+			Anuncios generales
+	@else
+		<li class="list-group-item">
+			<a href="{{ route('admin.ads') }}">
+				<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+				Anuncios generales
+			</a>
+	@endif
+	<li class="list-group-item">
+		<a href="">
+			<span class="indicator"><i class="fas fa-angle-double-right"></i></span>
+			Usuarios
+		</a>
+	</li>
 </ul>

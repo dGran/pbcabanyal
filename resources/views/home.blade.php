@@ -5,10 +5,17 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="margin10">
+    <a href="{{ route('page', 2) }}">Pagina dinamica de prueba</a>
 
-            <p><strong>Bienvenido a nuestra penya</strong>, nuestro punto de encuentro blaugrana. Si eres aficionado del Barcelona no lo dudes y <a href="">únete a nuestra familia barcelonista</a>, podrás ver todos los partidos de nuestro equipo con un gran ambiente, viajar a ver partidos de nuestro equipo, acceso a entradas, acceso a finales.</p>
+    <div class="presentation">
+        <div class="container">
+            <strong>Bienvenido a nuestra penya</strong>, nuestro punto de encuentro blaugrana. Si eres aficionado del Barcelona no lo dudes y <a href="">únete a nuestra familia barcelonista</a>, podrás ver todos los partidos de nuestro equipo con un gran ambiente, viajar a ver partidos de nuestro equipo, tendrás acceso a entradas para ver al equipo en directo.
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div class="margin10">
 
         {{--     <div class="row">
                 <div class="col-md-4">
@@ -41,14 +48,17 @@
                 </div>
             </div> --}}
 
-            <div class="ads">
-                <div class="alert alert-info alert-dismissible animated shake text-center" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <strong>Disponible la lotería de Navidad!</strong><br>Recoge tus boletos y reparte suerte. Este año nos toca!, buena suerte!
-                    <h3>52.045 - 8.567</h3>
-                </div>
 
-            </div>
+            @if ($ads->count() > 0)
+                <div class="ads">
+                    @foreach ($ads as $ad)
+                        <div class="alert alert-info alert-dismissible animated shake text-center" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {!! $ad->detail !!}
+                        </div>
+                    @endforeach
+                </div>
+            @endif
 
             <div class="banners">
                 @include('home.partials.banners')

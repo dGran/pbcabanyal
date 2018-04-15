@@ -83,6 +83,16 @@
 												{{ old('detail') }}
 											</textarea>
 										</div>
+										<div class="form-group">
+											<div class="clearfix">
+												<div class="pull-left">
+													<input type="checkbox" name="author_view" class="form-control" data-size="small" data-toggle="toggle" data-on="Mostrar autor" data-off="No mostrar autor" data-width="125">
+												</div>
+												<div class="pull-right">
+													<input type="checkbox" name="visible" class="form-control" checked data-size="small" data-toggle="toggle" data-on="Visible" data-off="No visible" data-width="125">
+												</div>
+											</div>
+										</div>
 
 									</div> {{-- col --}}
 								</div> {{-- row --}}

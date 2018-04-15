@@ -8,10 +8,10 @@
 		  		<a href="{{ route('admin') }}">Panel de Admin</a>
 			</li>
 			<li class="breadcrumb-item active">
-				<a href="{{ route('admin.posts') }}">Publicaciones</a>
+				<a href="{{ route('admin.categories') }}">Anuncios generales</a>
 			</li>
 			<li class="breadcrumb-item active">
-				{{ $post->title }}
+				Nuevo
 			</li>
 		</ol>
 	</div>
@@ -26,6 +26,7 @@
 					@include('admin.partials.menu')
         		</div>
         		<div class="col-sm-8 table-content">
+
 					{{-- errors --}}
 					@if (count($errors) > 0)
 					    <div class="alert alert-danger animated shake">
@@ -38,18 +39,18 @@
 					    </div>
 					@endif
 					{{-- /errors --}}
+
 					<form
-						id="formEdit"
+						id="formNew"
 						role="form"
 						method="POST"
-						action="{{ route('admin.posts.update', $post->slug) }}">
-						{{ method_field('PUT') }}
+						action="{{ route('admin.ads.save') }}">
 						{{ csrf_field() }}
 						<div class="panel panel-default admin-register-form">
 
 							<div class="panel-heading">
 								<span class="name">
-									Editar publicación
+									Nuev anuncio
 								</span>
 								<a class="action btn btn-default" id="btn-show-hide-left-menu">
 									<i class="expand-icon fas fa-expand-arrows-alt hidden-xs"></i>
@@ -60,57 +61,18 @@
 							<div class="panel-body fields">
 								<div class="row">
 									<div class="col-sm-12">
-										<div class="form-group">
-											<label for="category">Categoría<span class="required">obligatorio</span></label>
-											<select name="category" id="category" class="selectpicker form-control" value="{{ old('category_id') }}">
-												@foreach ($categories as $category)
-													@if ($category->id == $post->category_id)
-														<option selected value="{{ $category->id }}">
-															{{ $category->name }}
-														</option>
-													@else
-														<option value="{{ $category->id }}">
-															{{ $category->name }}
-														</option>
-													@endif
-												@endforeach
-											</select>
-										</div>
-
-										<div class="form-group">
-											<label for="title">Título<span class="required">obligatorio</span></label>
-											<input type="text" class="form-control" id="title" name="title" placeholder="Título" value="{{ $post->title }}">
-										</div>
-										<div class="form-group">
-											<label for="detail">Detalle<span class="required">obligatorio</span></label>
-											<textarea name="detail" id="detail" class="form-control" cols="30" rows="10">
-												{{ $post->detail }}
-											</textarea>
-										</div>
-										<div class="form-group">
-											<div class="clearfix">
-												<div class="pull-left">
-													@if ($post->author_view)
-														<input type="checkbox" name="author_view" class="form-control" checked data-size="small" data-toggle="toggle" data-on="Mostrar autor" data-off="No mostrar autor" data-width="125">
-													@else
-														<input type="checkbox" name="author_view" class="form-control" data-size="small" data-toggle="toggle" data-on="Mostrar autor" data-off="No mostrar autor" data-width="125">
-													@endif
-												</div>
-												<div class="pull-right">
-													@if ($post->visible)
-														<input type="checkbox" name="visible" class="form-control" checked data-size="small" data-toggle="toggle" data-on="Visible" data-off="No visible" data-width="125">
-													@else
-														<input type="checkbox" name="visible" class="form-control" data-size="small" data-toggle="toggle" data-on="Visible" data-off="No visible" data-width="125">
-													@endif
-												</div>
+										<div class="input-group">
+											<div class="form-group">
+												<label for="name">Detalle<span class="required">obligatorio</span></label>
+												<textarea name="detail" id="detail" class="form-control" cols="30" rows="10"></textarea>
 											</div>
-										</div>
+										</div> {{-- input group --}}
 									</div> {{-- col --}}
 								</div> {{-- row --}}
 							</div> {{-- panel-body --}}
 
 							<div class="panel-footer">
-								<a href="{{ route('admin.posts') }}" type="button" class="btn btn-default pull-left">
+								<a href="{{ route('admin.ads') }}" type="button" class="btn btn-default pull-left">
 									<i class="fas fa-list"></i><span class="hidden-xs">&nbsp;&nbsp;Volver al listado</span>
 								</a>
 								<button type="submit" class="btn btn-success">Guardar cambios</button>
@@ -129,12 +91,8 @@
     <script>
         $(document).ready(function(){
         	// put focus on input
-        	$("#name").focus();
-        	$("#name").select();
-
-	        $("#name").focus(function(){
-	        	$(this).select();
-	        });
+        	$("#detail").focus();
+        	$("#detail").select();
 
         	$('#detail').summernote({
         		height: '150px',
